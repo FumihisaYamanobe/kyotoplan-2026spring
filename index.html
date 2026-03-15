@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>春の京都 — 魂のリフレッシュ旅 2026.3.17-20</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;700&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Antique&display=swap');
+
+:root{
+  --ink:#1a1510;--gold:#b8935a;--gold-lt:#d4ae7a;--gold-pale:#f5edd8;
+  --cream:#faf7f0;--off:#f2ece0;--white:#fffef9;
+  --red:#7a2030;--sage:#4a6b4a;--blue:#2a4a6b;--umber:#6b4a2a;
+  --d1:#6b3055;--d2:#2a4a70;--d3:#2d5e35;--d4:#7a5030;
+  --shadow:0 8px 40px rgba(26,21,16,.13);
+  --shadow-lg:0 20px 80px rgba(26,21,16,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:var(--cream);color:var(--ink);line-height:1.8;
+  overflow-x:hidden;
+}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(170deg,#0e0a08 0%,#1e1008 30%,#2a1520 60%,#1a0e1a 100%);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:60px 20px;
+  position:relative;overflow:hidden;
+}
+.hero-pattern{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(ellipse 400px 400px at 15% 20%,rgba(184,147,90,.08) 0%,transparent 70%),
+    radial-gradient(ellipse 300px 300px at 85% 70%,rgba(122,32,48,.1) 0%,transparent 70%),
+    radial-gradient(ellipse 500px 300px at 50% 50%,rgba(42,74,112,.06) 0%,transparent 70%);
+}
+.hero-mon{
+  position:absolute;opacity:.04;
+  font-size:clamp(200px,40vw,500px);
+  font-family:'Zen Antique',serif;
+  color:var(--gold);
+  line-height:1;user-select:none;
+  transform:translateY(10px);
+}
+.hero-petals{
+  position:absolute;inset:0;pointer-events:none;
+  overflow:hidden;
+}
+.petal{
+  position:absolute;font-size:clamp(10px,2vw,20px);
+  animation:fall linear infinite;
+  opacity:0;
+}
+@keyframes fall{
+  0%{transform:translateY(-20px) rotate(0deg);opacity:0;}
+  10%{opacity:.6;}
+  90%{opacity:.3;}
+  100%{transform:translateY(110vh) rotate(720deg);opacity:0;}
+}
+.hero-eyebrow{
+  font-size:.75rem;letter-spacing:.3em;
+  color:rgba(255,255,255,.4);margin-bottom:20px;
+  text-transform:uppercase;position:relative;
+}
+.hero-title{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,6vw,4.5rem);
+  font-weight:200;letter-spacing:.15em;
+  color:#fff;line-height:1.3;
+  margin-bottom:16px;position:relative;
+}
+.hero-title em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold),#e8c070);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-subtitle{
+  font-size:.9rem;letter-spacing:.2em;
+  color:rgba(255,255,255,.55);
+  margin-bottom:50px;position:relative;
+}
+.hero-dates{
+  display:flex;gap:20px;flex-wrap:wrap;
+  justify-content:center;position:relative;
+  margin-bottom:60px;
+}
+.hero-date-chip{
+  border:1px solid rgba(184,147,90,.35);
+  background:rgba(184,147,90,.08);
+  color:rgba(255,255,255,.75);
+  padding:8px 22px;border-radius:30px;
+  font-size:.8rem;letter-spacing:.1em;
+  backdrop-filter:blur(4px);
+}
+.hero-scroll{
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;
+  gap:8px;color:rgba(255,255,255,.3);font-size:.7rem;letter-spacing:.2em;
+  animation:pulse 2s ease-in-out infinite;
+}
+.hero-scroll-line{
+  width:1px;height:50px;
+  background:linear-gradient(to bottom,rgba(184,147,90,.6),transparent);
+}
+@keyframes pulse{
+  0%,100%{opacity:.4;transform:translateX(-50%) translateY(0);}
+  50%{opacity:.8;transform:translateX(-50%) translateY(6px);}
+}
+
+/* ─── CONCEPT ─── */
+.concept{
+  background:var(--white);
+  padding:80px 20px;
+  text-align:center;
+}
+.concept-inner{max-width:680px;margin:0 auto;}
+.section-label{
+  font-size:.7rem;letter-spacing:.35em;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:16px;display:block;
+}
+.concept h2{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  font-weight:300;letter-spacing:.1em;
+  color:var(--ink);margin-bottom:28px;line-height:1.5;
+}
+.concept-divider{
+  width:60px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto 28px;
+}
+.concept p{
+  font-size:.93rem;color:#5a4a38;
+  line-height:2;
+}
+.concept-cards{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;margin-top:50px;
+}
+.concept-card{
+  background:var(--gold-pale);
+  border-radius:12px;padding:24px 18px;
+  text-align:center;
+}
+.concept-card .cc-icon{font-size:1.8rem;margin-bottom:10px;}
+.concept-card .cc-label{
+  font-size:.72rem;color:var(--gold);
+  letter-spacing:.12em;margin-bottom:4px;
+}
+.concept-card .cc-val{
+  font-family:'Noto Serif JP',serif;
+  font-size:.9rem;color:var(--ink);font-weight:500;
+}
+
+/* ─── SHINKANSEN BANNER ─── */
+.shinkansen{
+  background:linear-gradient(135deg,#1a1510,#2a1a10);
+  padding:50px 20px;
+  color:#fff;
+}
+.shinkansen-inner{
+  max-width:820px;margin:0 auto;
+}
+.shinkansen h3{
+  font-family:'Noto Serif JP',serif;
+  font-size:1rem;font-weight:300;
+  letter-spacing:.2em;color:var(--gold-lt);
+  margin-bottom:28px;
+  display:flex;align-items:center;gap:12px;
+}
+.shinkansen-route{
+  display:flex;align-items:center;
+  gap:0;flex-wrap:nowrap;
+  overflow-x:auto;padding-bottom:8px;
+}
+.stn{text-align:center;flex-shrink:0;}
+.stn-time{
+  font-size:1.6rem;font-weight:300;
+  letter-spacing:.05em;color:#fff;
+  line-height:1;
+}
+.stn-name{
+  font-size:.78rem;color:rgba(255,255,255,.5);
+  margin-top:4px;letter-spacing:.1em;
+}
+.stn-platform{
+  font-size:.65rem;color:var(--gold);
+  margin-top:3px;
+}
+.route-line{
+  flex:1;min-width:80px;
+  display:flex;flex-direction:column;
+  align-items:center;gap:4px;
+  padding:0 12px;
+}
+.rl-bar{
+  width:100%;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-lt),var(--gold));
+  position:relative;
+}
+.rl-bar::after{
+  content:'▶';position:absolute;right:-6px;top:-8px;
+  font-size:.7rem;color:var(--gold-lt);
+}
+.rl-info{font-size:.7rem;color:rgba(255,255,255,.5);letter-spacing:.05em;}
+.shinkansen-tips{
+  display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;
+}
+.stip{
+  background:rgba(184,147,90,.12);
+  border:1px solid rgba(184,147,90,.25);
+  border-radius:8px;padding:10px 16px;
+  font-size:.78rem;color:rgba(255,255,255,.7);
+}
+.stip strong{color:var(--gold-lt);}
+
+/* ─── HOTELS ─── */
+.hotels{
+  padding:80px 20px;
+  background:var(--off);
+}
+.hotels-inner{max-width:900px;margin:0 auto;}
+.sec-header{margin-bottom:40px;}
+.sec-header h2{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.4rem,3vw,2rem);
+  font-weight:300;color:var(--ink);
+  letter-spacing:.1em;margin-bottom:8px;
+}
+.sec-header p{font-size:.88rem;color:#7a6a55;}
+.hotel-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:22px;
+}
+.hotel-card{
+  background:var(--white);
+  border-radius:16px;overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:transform .25s,box-shadow .25s;
+}
+.hotel-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+}
+.hotel-card-band{height:6px;}
+.hb-gold{background:linear-gradient(90deg,var(--gold),var(--gold-lt),#e8c070);}
+.hb-silver{background:linear-gradient(90deg,#aaa8a0,#c8c4bc);}
+.hb-sage{background:linear-gradient(90deg,var(--sage),#6a9b6a);}
+.hotel-card-body{padding:22px 24px;}
+.hotel-rank{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.7rem;padding:3px 12px;border-radius:20px;
+  margin-bottom:12px;font-weight:500;
+}
+.hr-1{background:#fff8e8;color:#8b6020;border:1px solid #e8c876;}
+.hr-2{background:#f0f4f8;color:#3a5a80;border:1px solid #a0c0e0;}
+.hr-3{background:#f0f8f0;color:#3a6a3a;border:1px solid #90c090;}
+.hotel-name{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.05rem;color:var(--ink);
+  margin-bottom:4px;line-height:1.4;
+}
+.hotel-sub{
+  font-size:.75rem;color:#9a8a75;
+  letter-spacing:.05em;margin-bottom:12px;
+}
+.hotel-features{
+  display:flex;flex-wrap:wrap;gap:6px;
+  margin-bottom:14px;
+}
+.hf{
+  font-size:.68rem;
+  background:var(--gold-pale);
+  color:#6a5030;
+  padding:2px 10px;border-radius:10px;
+}
+.hotel-desc{
+  font-size:.82rem;color:#5a4a38;
+  line-height:1.75;margin-bottom:14px;
+}
+.hotel-price{
+  border-top:1px solid #ede8de;
+  padding-top:12px;
+  display:flex;align-items:baseline;gap:8px;
+}
+.hp-label{font-size:.72rem;color:#9a8a75;}
+.hp-val{font-size:1rem;font-weight:500;color:var(--gold);}
+.hp-note{font-size:.7rem;color:#aaa;}
+
+/* ─── DAYS ─── */
+.days{padding:20px 20px 80px;max-width:900px;margin:0 auto;}
+.day-card{
+  margin-bottom:50px;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  overflow:visible;
+}
+.day-head{
+  padding:22px 32px;
+  color:#fff;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:20px;align-items:center;
+  border-radius:20px 20px 0 0;
+  position:sticky;
+  top:46px;
+  z-index:50;
+  box-shadow:0 4px 20px rgba(0,0,0,.25);
+}
+.dh-d1{background:linear-gradient(135deg,#4a1535,var(--d1),#8a4070);}
+.dh-d2{background:linear-gradient(135deg,#1a2f50,var(--d2),#3a6090);}
+.dh-d3{background:linear-gradient(135deg,#1a3a20,var(--d3),#4a8050);}
+.dh-d4{background:linear-gradient(135deg,#4a2a10,var(--d4),#9a7040);}
+.day-badge{
+  background:rgba(255,255,255,.15);
+  border-radius:12px;padding:10px 16px;
+  text-align:center;min-width:70px;
+}
+.db-day{font-size:.65rem;letter-spacing:.15em;opacity:.8;}
+.db-num{
+  font-family:'Noto Serif JP',serif;
+  font-size:2rem;line-height:1;font-weight:300;
+}
+.db-wd{font-size:.65rem;opacity:.8;}
+.day-info h3{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.15rem;font-weight:400;
+  margin-bottom:6px;line-height:1.4;
+}
+.day-info .di-sub{font-size:.8rem;opacity:.7;letter-spacing:.05em;}
+.day-body{background:var(--white);border-radius:0 0 20px 20px;overflow:hidden;}
+
+/* timeline */
+.timeline{padding:8px 0 24px;}
+.tl-group-label{
+  font-size:.68rem;letter-spacing:.25em;
+  color:var(--gold);text-transform:uppercase;
+  padding:20px 32px 8px;
+  border-top:1px solid #ede8de;
+}
+.tl-group-label:first-child{border-top:none;}
+.tl-item{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  gap:0;
+  padding:0 32px;
+  position:relative;
+}
+.tl-item::before{
+  content:'';
+  position:absolute;
+  left:105px;top:22px;bottom:-22px;
+  width:1px;
+  background:linear-gradient(to bottom,#ddd8cc,transparent);
+}
+.tl-item:last-child::before{display:none;}
+.ti-time{
+  padding:16px 0 0;
+  font-size:.78rem;color:#9a8a70;
+  font-weight:500;letter-spacing:.05em;
+  text-align:right;padding-right:16px;
+}
+.ti-content{
+  padding:14px 0 14px 24px;
+  border-left:2px solid transparent;
+  position:relative;
+}
+.ti-content::before{
+  content:'';
+  position:absolute;
+  left:-5px;top:20px;
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 3px rgba(184,147,90,.2);
+}
+.ti-dot-train::before{background:#2a6090;}
+.ti-dot-food::before{background:var(--red);}
+.ti-dot-walk::before{background:var(--sage);}
+.ti-dot-sleep::before{background:#6a5090;}
+.ti-title{
+  font-size:.95rem;font-weight:500;
+  color:var(--ink);margin-bottom:4px;
+}
+.ti-detail{
+  font-size:.82rem;color:#5a4a38;line-height:1.75;
+}
+.ti-chips{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;
+}
+.ti-chip{
+  font-size:.7rem;padding:2px 10px;
+  border-radius:10px;
+}
+.tc-price{background:#fff5e8;color:#7a4820;border:1px solid #e8c890;}
+.tc-time{background:#e8f0f8;color:#2a4a70;border:1px solid #a0c0e0;}
+.tc-note{background:#f0f8f0;color:#2a5a30;border:1px solid #90c080;}
+.tc-warn{background:#fff0f0;color:#8a2020;border:1px solid #e09090;}
+.tc-book{background:#f8f0ff;color:#6a2090;border:1px solid #c090e0;}
+
+/* rest card */
+.rest-box{
+  background:#faf7f2;border:1px solid #e8e0d0;
+  border-radius:10px;padding:14px 18px;margin-top:10px;
+}
+.rb-header{
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:8px;
+}
+.rb-badge{
+  font-size:.68rem;padding:2px 10px;
+  border-radius:10px;font-weight:500;
+}
+.rbb-dinner{background:#f8e8ec;color:var(--red);border:1px solid #e8b0bc;}
+.rbb-lunch{background:#e8f0f8;color:#2a4a70;border:1px solid #a0c0e0;}
+.rbb-breakfast{background:#edf6ed;color:#2a5a30;border:1px solid #90c080;}
+.rbb-drinks{background:#fff0e0;color:#7a4820;border:1px solid #e8c090;}
+.rb-name{
+  font-family:'Noto Serif JP',serif;
+  font-size:.95rem;color:var(--ink);
+}
+.rb-meta{
+  display:flex;flex-wrap:wrap;gap:8px;
+  font-size:.75rem;color:#7a6a55;
+  margin-bottom:8px;
+}
+.rb-meta span{display:flex;align-items:center;gap:3px;}
+.rb-desc{font-size:.82rem;color:#5a4a38;line-height:1.75;}
+.rb-options{margin-top:8px;}
+.rb-opt{
+  background:#fff;border:1px solid #ddd5c5;
+  border-radius:8px;padding:10px 14px;
+  margin-bottom:8px;font-size:.82rem;
+}
+.rb-opt:last-child{margin-bottom:0;}
+.rb-opt strong{color:var(--ink);font-size:.88rem;}
+.rb-opt .ro-sub{color:#9a8a70;font-size:.75rem;margin-left:6px;}
+.rb-opt p{color:#6a5a45;margin-top:3px;line-height:1.65;}
+
+/* tip box */
+.tip-box{
+  background:linear-gradient(135deg,#f0f7f0,#e8f3e8);
+  border:1px solid #b8d8b0;border-left:4px solid var(--sage);
+  border-radius:0 10px 10px 0;
+  padding:12px 16px;margin-top:10px;
+  font-size:.8rem;color:#2a4a2a;line-height:1.75;
+}
+.tip-box strong{color:var(--sage);}
+.info-box{
+  background:linear-gradient(135deg,#fff8ec,#fff3e0);
+  border:1px solid #ddd0a0;border-left:4px solid var(--gold);
+  border-radius:0 10px 10px 0;
+  padding:12px 16px;margin-top:10px;
+  font-size:.8rem;color:#5a4020;line-height:1.75;
+}
+.info-box strong{color:var(--gold);}
+.warn-box{
+  background:#fff5f5;
+  border:1px solid #e8b0b0;border-left:4px solid #c03030;
+  border-radius:0 10px 10px 0;
+  padding:12px 16px;margin-top:10px;
+  font-size:.8rem;color:#602020;line-height:1.75;
+}
+
+/* ─── TRANSPORT ─── */
+.transport{
+  background:linear-gradient(160deg,#0e0a06,#1a1008);
+  padding:70px 20px;color:#fff;
+}
+.transport-inner{max-width:860px;margin:0 auto;}
+.transport h2{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.3rem,3vw,1.8rem);
+  font-weight:300;letter-spacing:.12em;
+  color:var(--gold-lt);margin-bottom:32px;
+  display:flex;align-items:center;gap:12px;
+}
+.route-day{margin-bottom:36px;}
+.rd-label{
+  font-size:.72rem;letter-spacing:.2em;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:12px;
+}
+.route-steps{
+  display:flex;flex-wrap:wrap;align-items:center;
+  gap:4px;
+}
+.rs-stop{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:8px;padding:8px 14px;
+  text-align:center;
+}
+.rs-time{font-size:.85rem;font-weight:500;color:#fff;}
+.rs-stn{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:2px;}
+.rs-arrow{
+  display:flex;flex-direction:column;align-items:center;
+  gap:2px;padding:0 4px;
+}
+.rs-arrow .ra-bar{
+  width:40px;height:1px;
+  background:linear-gradient(90deg,rgba(184,147,90,.6),rgba(184,147,90,.8));
+  position:relative;
+}
+.rs-arrow .ra-bar::after{
+  content:'▶';font-size:.55rem;
+  position:absolute;right:-5px;top:-5px;
+  color:var(--gold);
+}
+.rs-arrow .ra-info{
+  font-size:.65rem;color:rgba(255,255,255,.4);
+  white-space:nowrap;
+}
+.transport-tips{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;padding:20px 24px;
+  margin-top:24px;
+}
+.transport-tips h4{
+  font-size:.85rem;color:var(--gold-lt);
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.transport-tips ul{
+  list-style:none;
+  display:flex;flex-direction:column;gap:6px;
+}
+.transport-tips li{
+  font-size:.8rem;color:rgba(255,255,255,.65);
+  padding-left:16px;position:relative;line-height:1.7;
+}
+.transport-tips li::before{
+  content:'✦';position:absolute;left:0;
+  color:var(--gold);font-size:.65rem;top:3px;
+}
+
+/* ─── TIPS ─── */
+.tips-section{
+  padding:70px 20px;
+  background:var(--off);
+}
+.tips-inner{max-width:860px;margin:0 auto;}
+.tips-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;margin-top:30px;
+}
+.tips-card{
+  background:var(--white);
+  border-radius:14px;padding:24px;
+  box-shadow:var(--shadow);
+}
+.tips-card h4{
+  font-family:'Noto Serif JP',serif;
+  font-size:.95rem;color:var(--ink);
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+  padding-bottom:10px;
+  border-bottom:1px solid #ede8de;
+}
+.tips-card ul{list-style:none;}
+.tips-card li{
+  font-size:.8rem;color:#5a4a38;
+  padding:5px 0 5px 16px;
+  position:relative;line-height:1.7;
+}
+.tips-card li::before{
+  content:'✿';position:absolute;left:0;
+  color:var(--gold);font-size:.65rem;top:7px;
+}
+
+/* ─── CHECKLIST ─── */
+.checklist{
+  padding:70px 20px;
+  background:var(--white);
+}
+.checklist-inner{max-width:860px;margin:0 auto;}
+.check-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;margin-top:30px;
+}
+.check-col h4{
+  font-family:'Noto Serif JP',serif;
+  font-size:.88rem;color:var(--gold);
+  margin-bottom:10px;letter-spacing:.05em;
+}
+.check-col ul{list-style:none;}
+.check-col li{
+  font-size:.8rem;color:#5a4a38;
+  padding:4px 0 4px 22px;
+  position:relative;
+  border-bottom:1px dashed #ede8de;
+}
+.check-col li:last-child{border-bottom:none;}
+.check-col li::before{
+  content:'□';position:absolute;left:0;
+  color:#c0b090;
+}
+
+/* ─── OMIYAGE ─── */
+.omiyage{
+  padding:70px 20px;
+  background:var(--off);
+}
+.omiyage-inner{max-width:860px;margin:0 auto;}
+.omiyage-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;margin-top:28px;
+}
+.om-card{
+  background:var(--white);
+  border-radius:12px;padding:18px 20px;
+  box-shadow:0 2px 12px rgba(0,0,0,.07);
+}
+.om-badge{
+  font-size:.68rem;padding:2px 10px;border-radius:10px;
+  margin-bottom:8px;display:inline-block;
+}
+.omb-kyoto{background:#f8e8ec;color:var(--red);}
+.omb-kobe{background:#e8eef8;color:#2a3a6a;}
+.omb-limited{background:#f8f0e0;color:#7a5010;}
+.om-card h4{
+  font-family:'Noto Serif JP',serif;
+  font-size:.92rem;color:var(--ink);
+  margin-bottom:6px;
+}
+.om-card p{font-size:.78rem;color:#7a6a55;line-height:1.7;}
+
+/* ─── FOOTER ─── */
+footer{
+  background:linear-gradient(160deg,#0e0a06,#1a1015);
+  color:rgba(255,255,255,.55);
+  text-align:center;padding:60px 20px;
+}
+footer .f-icon{font-size:2.5rem;margin-bottom:20px;}
+footer h3{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.1rem;font-weight:300;
+  letter-spacing:.2em;color:var(--gold-lt);
+  margin-bottom:16px;
+}
+footer p{font-size:.82rem;line-height:2;max-width:500px;margin:0 auto 20px;}
+footer .f-note{
+  font-size:.72rem;color:rgba(255,255,255,.3);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:20px;margin-top:20px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:640px){
+  .day-head{grid-template-columns:auto 1fr;gap:14px;padding:20px 18px;}
+  .tl-item{grid-template-columns:56px 1fr;padding:0 18px;}
+  .tl-item::before{left:77px;}
+  .timeline{padding-bottom:16px;}
+  .tl-group-label{padding:16px 18px 6px;}
+  .hotel-card-body{padding:18px;}
+  .shinkansen-route{gap:0;}
+}
+
+/* ─── RESERVATION ALERT ─── */
+.reservation-section{
+  padding:50px 20px;
+  background:linear-gradient(135deg,#1a0f0f,#2a1515);
+  color:#fff;
+}
+.reservation-inner{max-width:860px;margin:0 auto;}
+.reservation-inner h2{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.2rem;font-weight:300;letter-spacing:.15em;
+  color:var(--gold-lt);margin-bottom:24px;
+}
+.res-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:16px;
+}
+.res-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;padding:18px 20px;
+}
+.res-urgency{
+  font-size:.7rem;letter-spacing:.1em;
+  padding:3px 10px;border-radius:10px;
+  margin-bottom:8px;display:inline-block;
+}
+.ru-now{background:rgba(200,50,50,.25);color:#ff9090;}
+.ru-soon{background:rgba(200,140,50,.25);color:#ffb870;}
+.ru-ok{background:rgba(80,150,80,.25);color:#90d090;}
+.res-card h4{
+  font-size:.92rem;color:#fff;margin-bottom:6px;
+}
+.res-card p{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.7;}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-mon">京</div>
+  <div class="hero-petals" id="petals"></div>
+
+  <span class="hero-eyebrow">A Journey of Renewal · 2026 Spring</span>
+  <h1 class="hero-title">
+    <em>春の京都</em><br>魂のリフレッシュ旅
+  </h1>
+  <p class="hero-subtitle">転職という人生の節目に贈る、世界でただひとつの旅</p>
+  <div class="hero-dates">
+    <span class="hero-date-chip">🚅 2026年3月17日(火)〜20日(金)</span>
+    <span class="hero-date-chip">🌸 3泊4日</span>
+    <span class="hero-date-chip">🏯 京都・神戸・大阪</span>
+    <span class="hero-date-chip">🌺 梅・早春</span>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- ══════════ SUB-NAV ══════════ -->
+<nav style="background:#1a1510;border-bottom:1px solid rgba(184,147,90,.25);position:sticky;top:0;z-index:100;">
+  <div style="max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:0;overflow-x:auto;">
+    <span style="font-size:.68rem;letter-spacing:.15em;color:rgba(255,255,255,.3);white-space:nowrap;padding:14px 16px 14px 0;border-right:1px solid rgba(255,255,255,.1);margin-right:8px;">ガイド</span>
+    <a href="kyoto_perfect_plan.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:#d4ae7a;white-space:nowrap;border-bottom:2px solid #d4ae7a;">📋 旅程プラン</a>
+    <a href="food.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🍽 食事候補</a>
+    <a href="leisure.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🌸 観光候補</a>
+    <a href="omiyage.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🎁 お土産候補</a>
+  </div>
+</nav>
+
+<!-- ══════════ CONCEPT ══════════ -->
+<section class="concept">
+  <div class="concept-inner">
+    <span class="section-label">Trip Concept</span>
+    <h2>仕事を忘れ、<br>自分を取り戻す旅へ</h2>
+    <div class="concept-divider"></div>
+    <p>
+      転職という大きな決断を前に、2週間という贈り物のような休暇がある。<br>
+      せわしなく動き続けた日常から離れて、京都の静けさの中にただ在ること。<br>
+      梅の香りを吸い込み、禅の庭に座り、地の食で身体を整える。<br>
+      この旅から戻るとき、あなたはきっと新しいステージへの覚悟を手にしている。
+    </p>
+    <div class="concept-cards">
+      <div class="concept-card"><div class="cc-icon">🌺</div><div class="cc-label">Season</div><div class="cc-val">梅・早春の京都</div></div>
+      <div class="concept-card"><div class="cc-icon">🍵</div><div class="cc-label">Food Style</div><div class="cc-val">和・地のもの</div></div>
+      <div class="concept-card"><div class="cc-icon">🧘</div><div class="cc-label">Pace</div><div class="cc-val">ゆっくり・深く</div></div>
+      <div class="concept-card"><div class="cc-icon">♨</div><div class="cc-label">Recovery</div><div class="cc-val">温泉・禅・庭園</div></div>
+      <div class="concept-card"><div class="cc-icon">👩</div><div class="cc-label">Style</div><div class="cc-val">大人の一人旅</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SHINKANSEN ══════════ -->
+<section class="shinkansen">
+  <div class="shinkansen-inner">
+    <h3>🚅 新幹線ガイド</h3>
+    <div class="route-day" style="margin-bottom:28px;">
+      <div class="rd-label">▶ 往路 3/17(火) — 新横浜 → 京都</div>
+      <div class="route-steps">
+        <div class="rs-stop"><div class="rs-time">09:33</div><div class="rs-stn">新横浜</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">のぞみ / 2h11m</div></div>
+        <div class="rs-stop"><div class="rs-time">11:44</div><div class="rs-stn">京都</div></div>
+      </div>
+    </div>
+    <div class="route-day">
+      <div class="rd-label">◀ 復路 3/20(金) — 京都 → 新横浜</div>
+      <div class="route-steps">
+        <div class="rs-stop"><div class="rs-time">11:03</div><div class="rs-stn">京都</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">のぞみ / 2h10m</div></div>
+        <div class="rs-stop"><div class="rs-time">13:13</div><div class="rs-stn">新横浜</div></div>
+      </div>
+    </div>
+    <div class="shinkansen-tips">
+      <div class="stip">💺 <strong>富士山が見える席</strong>：E席（窓側）。新大阪方面行きは東側なのでE席で富士山が正面に見える。出発から約44分後に絶景が広がる</div>
+      <div class="stip">💳 <strong>スマートEX</strong>：通常13,050円→スマートEX会員は200円引き（登録無料）。EX早特21ワイドなら21日前予約で約1,570円節約</div>
+      <div class="stip">🟢 <strong>グリーン車</strong>：+5,190円でグリーン車へ。リフレッシュ旅の幕開けにゆったり空間はいかが？全席コンセント・広いシートで2時間が至福に</div>
+      <div class="stip">🧳 <strong>大型荷物</strong>：スーツケースなど大型荷物は「特大荷物スペースつき座席」を予約しておくと安心（無料）</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOTELS ══════════ -->
+<section class="hotels">
+  <div class="hotels-inner">
+    <div class="sec-header">
+      <span class="section-label">Confirmed Accommodation</span>
+      <h2>🏨 宿泊 — 予約確定済み</h2>
+      <p>楽天トラベルで予約済み。2泊+1泊の2ホテルプラン。どちらも天然温泉・京都駅徒歩圏で最高のリフレッシュ環境。</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-top:32px;">
+
+      <!-- Hotel 1 -->
+      <div style="background:#fff;border:2px solid #d4ae7a;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(184,147,90,.15);">
+        <div style="background:linear-gradient(90deg,#b8935a,#d4ae7a);padding:14px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <span style="color:#fff;font-size:.75rem;font-weight:500;letter-spacing:.08em;">3/17（火）チェックイン　〜　3/19（木）チェックアウト ／ 2泊</span>
+          <span style="background:#fff;color:#7a5820;font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:20px;">✅ 予約確定</span>
+        </div>
+        <div style="padding:24px;">
+          <div style="font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:500;color:#1a1510;letter-spacing:.06em;margin-bottom:3px;">京都 梅小路 花伝抄</div>
+          <div style="font-size:.78rem;color:#6a5a45;letter-spacing:.06em;margin-bottom:16px;">共立リゾート ／ 京都駅徒歩約10分</div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;">
+            <span style="background:#fff8ee;border:1px solid #e8c878;color:#7a5820;font-size:.72rem;padding:4px 10px;border-radius:4px;">♨ 天然温泉大浴場</span>
+            <span style="background:#fff8ee;border:1px solid #e8c878;color:#7a5820;font-size:.72rem;padding:4px 10px;border-radius:4px;">🛁 貸切風呂5種（無料）</span>
+            <span style="background:#fff8ee;border:1px solid #e8c878;color:#7a5820;font-size:.72rem;padding:4px 10px;border-radius:4px;">🛏 ツイン22㎡・シャワー付</span>
+            <span style="background:#fff8ee;border:1px solid #e8c878;color:#7a5820;font-size:.72rem;padding:4px 10px;border-radius:4px;">🚭 全室禁煙</span>
+            <span style="background:#fff8ee;border:1px solid #e8c878;color:#7a5820;font-size:.72rem;padding:4px 10px;border-radius:4px;">🍽 食事なし（素泊まり）</span>
+          </div>
+
+          <div style="background:#faf6ee;border:1px solid #e8dcc8;border-radius:8px;padding:14px 18px;font-size:.82rem;line-height:2;">
+            <div style="display:grid;grid-template-columns:7em 1fr;gap:2px 0;color:#1a1510;">
+              <span style="color:#8a7050;font-weight:500;">チェックイン</span><span style="color:#1a1510;font-weight:700;">18:00〜</span>
+              <span style="color:#8a7050;font-weight:500;">チェックアウト</span><span style="color:#1a1510;">〜12:00</span>
+              <span style="color:#8a7050;font-weight:500;">予約番号</span><span style="font-family:monospace;letter-spacing:.08em;color:#7a5820;font-weight:700;">RYa0mh2p2j</span>
+              <span style="color:#8a7050;font-weight:500;">お支払い</span><span style="color:#1a1510;">¥3,470（楽天ポイント 23,700pt 使用）</span>
+              <span style="color:#8a7050;font-weight:500;">電話</span><span><a href="tel:075-316-0055" style="color:#2a4a7a;text-decoration:none;font-weight:500;">075-316-0055</a></span>
+              <span style="color:#8a7050;font-weight:500;">住所</span><span style="color:#1a1510;">〒600-8843 京都市下京区朱雀内畑町41-10</span>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:.8rem;color:#5a4a35;line-height:1.75;border-top:1px solid #ede8de;padding-top:12px;">
+            5種の貸切露天風呂は無料・予約不要。到着後すぐに浸かれる。梅小路公園・鉄道博物館そばの静かな立地で、観光のベースとして最高の環境。
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel 2 -->
+      <div style="background:#fff;border:2px solid #6a8fb0;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(42,74,112,.12);">
+        <div style="background:linear-gradient(90deg,#3a6a90,#5a90b8);padding:14px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <span style="color:#fff;font-size:.75rem;font-weight:500;letter-spacing:.08em;">3/19（木）チェックイン　〜　3/20（金）チェックアウト ／ 1泊</span>
+          <span style="background:#fff;color:#2a4a70;font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:20px;">✅ 予約確定</span>
+        </div>
+        <div style="padding:24px;">
+          <div style="font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:500;color:#1a1510;letter-spacing:.06em;margin-bottom:3px;">京湯元 ハトヤ瑞鳳閣</div>
+          <div style="font-size:.78rem;color:#6a5a45;letter-spacing:.06em;margin-bottom:16px;">京都駅徒歩約5分 ／ 下京区</div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;">
+            <span style="background:#eef4fb;border:1px solid #90b8d8;color:#2a4a70;font-size:.72rem;padding:4px 10px;border-radius:4px;">♨ 天然温泉</span>
+            <span style="background:#eef4fb;border:1px solid #90b8d8;color:#2a4a70;font-size:.72rem;padding:4px 10px;border-radius:4px;">🏯 和室（禁煙）</span>
+            <span style="background:#eef4fb;border:1px solid #90b8d8;color:#2a4a70;font-size:.72rem;padding:4px 10px;border-radius:4px;">🍱 和朝食付き（3/20）</span>
+            <span style="background:#eef4fb;border:1px solid #90b8d8;color:#2a4a70;font-size:.72rem;padding:4px 10px;border-radius:4px;">🚿 バス・トイレ・洗面独立</span>
+            <span style="background:#eef4fb;border:1px solid #90b8d8;color:#2a4a70;font-size:.72rem;padding:4px 10px;border-radius:4px;">📶 Wi-Fi無料</span>
+          </div>
+
+          <div style="background:#f2f7fc;border:1px solid #c0d8ec;border-radius:8px;padding:14px 18px;font-size:.82rem;line-height:2;">
+            <div style="display:grid;grid-template-columns:7em 1fr;gap:2px 0;color:#1a1510;">
+              <span style="color:#4a6a88;font-weight:500;">チェックイン</span><span style="color:#1a1510;font-weight:700;">15:00〜</span>
+              <span style="color:#4a6a88;font-weight:500;">チェックアウト</span><span style="color:#1a1510;">〜11:00</span>
+              <span style="color:#4a6a88;font-weight:500;">予約番号</span><span style="font-family:monospace;letter-spacing:.08em;color:#2a4a70;font-weight:700;">RYa0mh2r0k</span>
+              <span style="color:#4a6a88;font-weight:500;">お支払い</span><span style="color:#1a1510;">¥22,852（クーポン適用済）</span>
+              <span style="color:#4a6a88;font-weight:500;">電話</span><span><a href="tel:075-361-1231" style="color:#2a4a7a;text-decoration:none;font-weight:500;">075-361-1231</a></span>
+              <span style="color:#4a6a88;font-weight:500;">住所</span><span style="color:#1a1510;">〒600-8234 京都市下京区西洞院通塩小路下ル南不動堂町802番地</span>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:.8rem;color:#5a4a35;line-height:1.75;border-top:1px solid #ede8de;padding-top:12px;">
+            旅の最終夜は和室でゆっくり。翌朝の和朝食が付いており、帰路の新幹線前に旅の余韻をしっかりと味わえる。京都駅から徒歩圏で帰り支度もスムーズ。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-box" style="margin-top:24px;max-width:900px;">
+      <strong>🧳 ホテル間の移動について：</strong> 3/19（木）は花伝抄をチェックアウト後、荷物をハトヤ瑞鳳閣へ。どちらも下京区・京都駅徒歩圏内のため、タクシーで約5分（¥700〜900目安）。嵐山観光の前に荷物を預けてから出発するのがスムーズ。ハトヤ瑞鳳閣のチェックインは15:00〜なので、荷物のみ先に預けてもらえばOK。
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DAY PLANS ══════════ -->
+<div class="days">
+  <div style="text-align:center;padding:40px 0 10px;">
+    <span class="section-label">Day by Day Itinerary</span>
+    <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:300;letter-spacing:.1em;color:var(--ink);">4日間、完全ガイド</h2>
+  </div>
+
+  <!-- ═══ DAY 1 ═══ -->
+  <div class="day-card" data-day="3/17">
+    <div class="day-head dh-d1">
+      <div class="day-badge">
+        <div class="db-day">DAY</div>
+        <div class="db-num">1</div>
+        <div class="db-wd">火曜日</div>
+      </div>
+      <div class="day-info">
+        <h3>3月17日 ― 旅のはじまり。京都、ようこそ。</h3>
+        <div class="di-sub">🚅 新横浜発 → 京都着 → 🐰 岡崎神社 → ⛩ 南禅寺 → 🏯 清水周辺 → 🥂 友人と夕食</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+
+        <div class="tl-group-label">🚅 移動</div>
+        <div class="tl-item">
+          <div class="ti-time">08:45</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">新横浜駅 到着・改札へ</div>
+            <div class="ti-detail">出発45分前到着で余裕を。コンビニで新幹線用のお茶・軽食を購入。ホームでE席（富士山側）を確認しておく。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">09:33</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🚅 のぞみ 乗車（E席推奨）</div>
+            <div class="ti-detail">2時間11分の旅。出発後約44分で富士山が見えてくる（新富士駅付近）。これが最初のリフレッシュ体験。スマホをしまって、車窓を楽しんで。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-time">富士山→約10:17頃</span>
+              <span class="ti-chip tc-price">指定席¥13,050</span>
+              <span class="ti-chip tc-note">グリーン車+¥5,190</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">11:44</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🏯 京都駅 到着！</div>
+            <div class="ti-detail">荷物をホテルに預ける（ほとんどのホテルでチェックイン前預けOK）。身軽になって散策へ。</div>
+            <div class="tip-box">💡 京都駅八条口・中央口のコインロッカーも利用可（500〜700円/日）。ホテルへの荷物送り（タクシー利用）も◎。</div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🍱 ランチ</div>
+        <div class="tl-item">
+          <div class="ti-time">12:15</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🛍 錦市場へ — 地下鉄烏丸線で四条駅下車</div>
+            <div class="ti-detail">京都駅→四条駅：地下鉄烏丸線で約5分（230円）。四条駅から錦市場まで徒歩7分。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">12:30</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🥢 ランチ — 京の台所・錦市場で初めての京ごはん</div>
+            <div class="rest-box">
+              <div class="rb-header"><span class="rb-badge rbb-lunch">ランチ</span><span class="rb-name">京菜味のむら 錦店</span></div>
+              <div class="rb-meta">
+                <span>📍 錦市場内</span>
+                <span>💴 1,000〜1,500円</span>
+                <span>⏰ 11:00〜</span>
+                <span>👩 一人OK</span>
+              </div>
+              <div class="rb-desc">12種のおばんざいが色とりどりのガラス器に盛られた「京おばんざいセット」。薄味で素材の旨みを引き出す京の食文化の入門編として最適。初日の胃に優しい。</div>
+            </div>
+            <div class="rb-opt" style="margin-top:8px;font-size:.82rem;">
+              <strong>代替案：三嶋亭</strong><span class="ro-sub">（寺町四条・創業1873年）</span>
+              <p>近江牛すき焼きのランチ。¥11,000〜。一生に一度の体験として格別。要予約 075-221-0003</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🐰 午後の散策 — 岡崎・南禅寺・清水</div>
+        <div class="tl-item">
+          <div class="ti-time">14:00</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🐇 岡崎神社 — うさぎの神様でかわいい祈願を</div>
+            <div class="ti-detail">平安神宮東側に佇む「うさぎ神社」。全国的にも珍しいうさぎの狛犬や手水舎が愛らしく、縁結び・安産のご利益で知られる。3月は境内もにぎやか。新しいキャリアのはじまりに、ここで何か祈ってみて。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-price">参拝無料</span>
+              <span class="ti-chip tc-time">20〜30分</span>
+              <span class="ti-chip tc-note">📍 左京区岡崎東天王町51</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">14:40</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">⛩ 南禅寺 — 水路閣と三門の荘厳な静けさ</div>
+            <div class="ti-detail">岡崎神社から徒歩約10分。臨済宗の大本山で京都を代表する禅寺。明治時代のレンガ造りアーチ水路閣は和と洋が融合した京都ならではの絶景。三門の石畳に立つだけで別世界。琵琶湖疏水の遊歩道を少し歩くのもおすすめ。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-price">境内無料（方丈庭園¥500）</span>
+              <span class="ti-chip tc-time">40〜60分</span>
+            </div>
+            <div class="tip-box">💡 水路閣のアーチは絶好の撮影スポット。上に上ると桜並木の遊歩道を歩けて気持ちいい。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">15:45</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🏯 清水寺周辺 — 二年坂・三年坂</div>
+            <div class="ti-detail">南禅寺から東山エリアへ移動（タクシー約10分・¥1,200〜）。二年坂・三年坂の石畳を歩きながら甘味処や京雑貨をゆっくり覗く。清水の舞台からの眺めは3月の澄んだ空気の中で格別。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-price">清水寺¥400</span>
+              <span class="ti-chip tc-time">60分程度</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">17:00</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🍵 産寧坂でお茶タイム — 旅のはじまりに一服</div>
+            <div class="ti-detail">散策の疲れを産寧坂の甘味処で癒す。抹茶パフェ・わらびもち・あぶり餅など旅の記念になるお菓子を。このあと友人との夕食があるので軽めに。</div>
+            <div class="tip-box">💡 <strong>かさぎ屋</strong>（産寧坂）や<strong>茶寮 都路里 祇園本店</strong>が人気。食べすぎ注意！</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">17:45</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🏨 梅小路 花伝抄 チェックイン（18:00〜）</div>
+            <div class="ti-detail">清水エリアからタクシーで花伝抄へ（約15分・¥1,800〜）。荷物を受け取りさっとチェックイン。今夜は友人と夕食なので、シャワーで汗を流してから京都駅へ。貸切風呂は明日以降のお楽しみに！</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-note">予約番号：RYa0mh2p2j</span>
+              <span class="ti-chip tc-note">♨ 貸切露天は明朝にゆっくり</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🥂 夕食 — 京都在住の友人と再会</div>
+        <div class="tl-item">
+          <div class="ti-time">18:20</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🚶 花伝抄 → 京都駅へ徒歩</div>
+            <div class="ti-detail">花伝抄から京都駅まで徒歩約10分。京都タワーを眺めながら駅ビル方面へ。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">18:30</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">☕ 京都タワー店スタバで友人と待ち合わせ</div>
+            <div class="ti-detail">京都在住の友人と京都タワー地下1Fのスターバックスで待ち合わせ。京都タワーを目印に、旅の第一声をコーヒー片手に交わす。その後は友人に選んでもらったお店に案内してもらう。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-note">📍 スターバックス 京都タワー店（京都タワーB1F）</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">19:00</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🍽 夕食 — 地元民が選ぶ京都の味（友人にお任せ）</div>
+            <div class="ti-detail">京都在住の友人が選んでくれたお店へ。地元ならではの隠れた名店かもしれない。旅のファーストナイトを友人との温かい会話で彩る、かけがえない夜。明日は神戸へ旅立つ前夜でもある。</div>
+            <div class="tip-box">💡 地元の友人にまかせれば間違いなし！京都の最新グルメ情報も教えてもらおう。2日目の友人とは別な友人とのひとときを楽しんで。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">21:30</div>
+          <div class="ti-content ti-dot-sleep">
+            <div class="ti-title">🌙 花伝抄 帰宿・就寝</div>
+            <div class="ti-detail">友人との再会の余韻を胸に帰宿。明日は早い出発（神戸へ）なので早めに休む。夜遅くでも空いていれば貸切風呂で疲れを癒して。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DAY 2 ═══ -->
+  <div class="day-card" data-day="3/18">
+    <div class="day-head dh-d2">
+      <div class="day-badge">
+        <div class="db-day">DAY</div>
+        <div class="db-num">2</div>
+        <div class="db-wd">水曜日</div>
+      </div>
+      <div class="day-info">
+        <h3>3月18日 ― 港町 神戸へ。友と歩き、大阪の夜で一杯。</h3>
+        <div class="di-sub">☕ 京都駅で朝食 → 🚉 JR神戸線 → 🏘 北野異人館 → ⚓ メリケンパーク → 🍶 大阪で友人と夕食 → 🛒 翌朝軽食を買って帰宿</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+
+        <div class="tl-group-label">☕ 朝食 — 京都駅直結でゆっくり</div>
+        <div class="tl-item">
+          <div class="ti-time">08:30</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">☕ 朝食 — 宇治茶のカフェで神戸へ旅立つ朝</div>
+            <div class="rest-box">
+              <div class="rb-header"><span class="rb-badge rbb-breakfast">朝食</span><span class="rb-name">茶寮 FUKUCHA（フクチャ）</span></div>
+              <div class="rb-meta">
+                <span>📍 京都ポルタ B1F（京都駅中央口地下直結）</span>
+                <span>💴 ¥1,200〜1,800程度</span>
+                <span>⏰ 8:30〜20:00</span>
+                <span>👩 一人OK・ゆったり</span>
+              </div>
+              <div class="rb-desc">老舗茶舗・福寿園が手がける茶の湯カフェ。宇治抹茶を使ったドリンクや和スイーツが充実し、京都らしい朝を演出。京都駅地下直結なので神戸への出発前も余裕をもって楽しめる。ゆっくり座って今日の神戸プランを頭に描きながら。</div>
+            </div>
+            <div class="rb-opt" style="margin-top:8px;font-size:.82rem;">
+              <strong>代替案：BOTANIQ KAJIYA（梅小路公園内）</strong><span class="ro-sub">（花伝抄から徒歩10分）</span>
+              <p>梅小路公園の緑の中のボタニカルカフェ。エッグベネディクト¥1,300〜。春の朝、庭園を眺めながらの朝食は格別。8:00〜（土日）・9:00〜（平日）。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🚉 神戸へ移動</div>
+        <div class="tl-item">
+          <div class="ti-time">09:30</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🚉 京都駅出発 → JR新快速 三ノ宮行き</div>
+            <div class="ti-detail">朝食後、京都ポルタから地下通路でそのままJR改札へ。新快速（毎時3〜4本）に乗車。三ノ宮まで乗り換えなし一本！</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-time">所要約56分</span>
+              <span class="ti-chip tc-price">¥1,110</span>
+              <span class="ti-chip tc-note">ICカード利用可</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">10:30</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🏙 三ノ宮駅 到着！友人と合流</div>
+            <div class="ti-detail">友人と三ノ宮駅中央改札で合流。神戸の空気は京都とひと味違う洋の薫り。</div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🏘 神戸散策</div>
+        <div class="tl-item">
+          <div class="ti-time">11:00</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🏘 北野異人館街 散策</div>
+            <div class="ti-detail">
+              三ノ宮駅から北へ徒歩約20分（または市バス2番）。明治・大正時代の異国情緒あふれる洋館が点在するエリアを気ままに歩く。<br><br>
+              <strong>おすすめルート：</strong> うろこの家（展望台から神戸港一望）→ 風見鶏の館（国指定重要文化財）→ 萌黄の館 → 北野天満神社（丘の上・絶景）
+            </div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-price">うろこの家¥1,050</span>
+              <span class="ti-chip tc-price">風見鶏の館¥500</span>
+              <span class="ti-chip tc-time">所要90〜120分</span>
+            </div>
+            <div class="tip-box">💡 <strong>香水作り体験</strong>（一部の異人館で¥3,000〜）もあり。友人と一緒にオリジナル香水を作る体験は旅の思い出に。</div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🥩 ランチ（友人と）</div>
+        <div class="tl-item">
+          <div class="ti-time">12:30</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🥩 神戸ランチ — 友人との特別な一食</div>
+            <div class="rest-box">
+              <div class="rb-header"><span class="rb-badge rbb-lunch">ランチ★推薦</span><span class="rb-name">モーリヤ 本店</span></div>
+              <div class="rb-meta">
+                <span>📍 北野坂・元町</span>
+                <span>💴 ランチ¥9,090〜</span>
+                <span>⏰ 11:00〜22:00</span>
+              </div>
+              <div class="rb-desc">1885年創業の神戸牛ステーキの老舗中の老舗。A4・A5ランクの神戸牛を丁寧に。ランチのビーフシチューセットは重すぎず上品で女性に人気。友人との特別ランチとして完璧な一軒。要予約推奨。</div>
+            </div>
+            <div class="rb-options" style="margin-top:8px;">
+              <div class="rb-opt">
+                <strong>気軽に神戸牛体験：モトステーキ</strong>
+                <p>旧居留地エリアの立ち食いスタイル。1,500円程度〜で神戸牛がお手軽に。友人と並んで立ち食いも旅らしい体験。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">⚓ 港まち・神戸</div>
+        <div class="tl-item">
+          <div class="ti-time">14:00</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🏛 旧居留地 → メリケンパーク → ハーバーランド</div>
+            <div class="ti-detail">
+              130年以上前の西洋建築が残る旧居留地を歩き、神戸市博物館前を通過。メリケンパークへ。<br>
+              「be kobe」モニュメントで友人との1枚を。神戸ポートタワー（耐震工事後リニューアル）も。<br>
+              ハーバーランドのumieでウィンドウショッピング。海風が心地よい。
+            </div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-time">約2〜2.5時間</span>
+              <span class="ti-chip tc-note">海沿いウォーキング◎</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">16:30</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🚉 三ノ宮 → 大阪（難波）へ移動</div>
+            <div class="ti-detail">友人とお別れ後、大阪へ。阪神電車 三宮→大阪難波（直通）が最もスムーズ。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-time">阪神電車：約43分</span>
+              <span class="ti-chip tc-price">¥400</span>
+              <span class="ti-chip tc-note">難波に直通が便利</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🍶 大阪で晩酌</div>
+        <div class="tl-item">
+          <div class="ti-time">17:30</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🙏 法善寺横丁 — 水掛不動さんに手を合わせて</div>
+            <div class="ti-detail">難波駅から徒歩5分。苔むした水掛不動尊に旅の無事と転職の成功をそっとお願いして。横丁の夕暮れ時の雰囲気は一生忘れない。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">18:00</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🍽 夕食 — 大阪に住む友人と、法善寺横丁の夜を楽しむ</div>
+            <div class="rest-box">
+              <div class="rb-header"><span class="rb-badge rbb-dinner">夕食★推薦</span><span class="rb-name">法善寺横丁の割烹・小料理屋</span></div>
+              <div class="rb-meta">
+                <span>📍 法善寺横丁（難波）</span>
+                <span>💴 ¥3,000〜8,000（おふたりで）</span>
+                <span>⏰ 17:00〜</span>
+                <span>👫 2名・カウンター〜テーブル席</span>
+              </div>
+              <div class="rb-desc">難波に住む友人と、法善寺横丁の石畳を歩きながら今夜の店を選ぶのも楽しい。老舗の割烹や小料理屋でおでん・刺身・焼き物と地酒をゆっくりいただく。神戸での一日を語りながら過ごす、旅の中でいちばん賑やかな夜。</div>
+            </div>
+            <div class="info-box">
+              <strong>🎯 ヒント：</strong> 水掛不動さん（法善寺）への参拝も忘れずに。横丁をひと回りしてから店を決めるとより雰囲気が出る。友人に大阪のおすすめを聞いてみよう。
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">20:30</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🚉 大阪→京都 帰路</div>
+            <div class="ti-detail">なんば→大阪(梅田)：地下鉄御堂筋線（約10分・¥230）→ JR大阪→京都：新快速（約29分・¥570）。21:10頃に京都着。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-time">難波→京都 約50分</span>
+              <span class="ti-chip tc-price">合計¥800程度</span>
+              <span class="ti-chip tc-warn">終電注意：JR大阪→京都最終 23:15頃</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">21:15</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🛒 京都駅で翌朝の軽食を購入してから帰宿</div>
+            <div class="ti-detail">明日（3/19）は遅めの動き出し予定。大阪でしっかり食べた翌朝、ホテルの大浴場でゆっくりしてから遅めのブランチにするため、軽くつまめる朝食用の食べ物を購入しておく。</div>
+            <div class="tip-box">💡 <strong>おすすめ購入場所：</strong>京都駅ビル1F「京都おにぎり専門店」や「ローソン 京都駅八条東口店」、または「The CUBE」（京都伊勢丹地下）のデパ地下惣菜。翌朝ベッドでのんびり食べるのにぴったり。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">21:45</div>
+          <div class="ti-content ti-dot-sleep">
+            <div class="ti-title">🌙 京都 花伝抄 帰宿・就寝</div>
+            <div class="ti-detail">神戸と大阪の思い出を胸に帰宿。貸切風呂でゆっくり疲れを癒して。明日はチェックアウトまでのんびり過ごす日。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DAY 3 ═══ -->
+  <div class="day-card" data-day="3/19">
+    <div class="day-head dh-d3">
+      <div class="day-badge">
+        <div class="db-day">DAY</div>
+        <div class="db-num">3</div>
+        <div class="db-wd">木曜日</div>
+      </div>
+      <div class="day-info">
+        <h3>3月19日 ― のんびりが一番。温泉・ブランチ・嵐山と、京都の空気をたっぷり吸う一日。</h3>
+        <div class="di-sub">♨ 温泉モーニング → ☕ 遅めのブランチ → 🎋 嵐山のんびり散策 → 🥬 京野菜の夕食 → ♨ 温泉でフィニッシュ</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+
+        <div class="tl-group-label">♨ 旅の朝は花伝抄の温泉でリセット</div>
+        <div class="tl-item">
+          <div class="ti-time">07:00</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">♨ 大浴場タイム — 岩風呂・寝湯でじっくりリフレッシュ</div>
+            <div class="ti-detail">朝一番に大浴場へ。岩風呂でゆっくり体をほぐし、寝湯でうとうと。昨日の神戸・大阪の遊び疲れを温泉がすべて洗い流してくれる。3日目の朝こそが、この旅でいちばんのリラックスタイム。急がない、急がない。</div>
+            <div class="tip-box">💡 朝7時台は空いていることが多い。寝湯は浮力で体が浮く感覚が気持ちよく、ついうとうとしてしまうほど。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">09:00</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🛏 部屋に戻ってのんびり — チェックアウト準備</div>
+            <div class="ti-detail">昨晩買ってきた軽食を食べながら、ゆっくりと荷物を整理。チェックアウトは〜11:00なので焦らず、でも10時前には荷造りを済ませておくとスムーズ。温泉上がりのまどろみの中でのんびりと支度を整える。</div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🌿 チェックアウト → BOTANIQ KAJIYA でブランチ</div>
+        <div class="tl-item">
+          <div class="ti-time">10:00</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🏨 花伝抄 チェックアウト（〜11:00）</div>
+            <div class="ti-detail">お世話になった花伝抄をチェックアウト。荷物はそのまま持って、すぐそばの梅小路公園へ向かう。ハトヤ瑞鳳閣への荷物預けはブランチの後でOK。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-note">⏰ チェックアウトは〜11:00</span>
+              <span class="ti-chip tc-note">🌿 梅小路公園まで徒歩すぐ</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">10:15</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🌿 ブランチ — 梅小路公園の緑に包まれてゆっくり</div>
+            <div class="rest-box">
+              <div class="rb-header"><span class="rb-badge rbb-breakfast">ブランチ★推薦</span><span class="rb-name">BOTANIQ KAJIYA（ボタニカジヤ）</span></div>
+              <div class="rb-meta">
+                <span>📍 下京区観喜寺町56-3 梅小路公園 緑の館内（花伝抄から徒歩3分）</span>
+                <span>💴 ¥1,500〜2,500</span>
+                <span>⏰ 土日祝8:00〜 / 平日9:00〜（LO 21:00）</span>
+                <span>☎ 075-585-2755</span>
+              </div>
+              <div class="rb-desc">梅小路公園「緑の館」内に佇むボタニカルカフェ＆レストラン。植物に包まれた明るく開放的な空間で、抹茶ティラミストースト・フラワーリースサラダ・季節のパフェなどを楽しめる。荷物を持ったまま来てもゆったり座れる広い店内。チェックアウト後の最初の一息に最高のロケーション。</div>
+              <div class="ti-chips" style="margin-top:8px;">
+                <span class="ti-chip tc-note">🧳 荷物持ち込みOK（大型荷物も安心）</span>
+                <span class="ti-chip tc-note">🌿 梅小路公園の緑が望める</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">12:00</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🧳 ハトヤ瑞鳳閣 へ荷物を預ける</div>
+            <div class="ti-detail">ブランチ後、ハトヤ瑞鳳閣へ荷物を先預け。チェックインは15:00〜だが荷物は早めに預かってもらえる。梅小路→ハトヤ瑞鳳閣はタクシーで約5分（¥700〜900）または徒歩15分。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-note">🚕 梅小路→ハトヤ瑞鳳閣：タクシー約5分</span>
+              <span class="ti-chip tc-note">予約番号 RYa0mh2r0k</span>
+            </div>
+            <div class="tip-box">💡 ハトヤ瑞鳳閣 TEL: 075-361-1231。荷物預かりは当日9時〜OK（要確認）。</div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🎋 嵐山 — のんびり竹と禅の午後</div>
+        <div class="tl-item">
+          <div class="ti-time">12:30</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🚉 京都駅 → 嵐山へ移動</div>
+            <div class="ti-detail">ハトヤ瑞鳳閣から京都駅へ徒歩5分。JR嵯峨野線（嵯峨野線）で嵯峨嵐山駅まで約15〜17分。身軽になって嵐山へ出発！</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-price">¥240</span>
+              <span class="ti-chip tc-time">約20分</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">13:00</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🎋 竹林の小径 — 世界が静止する20分</div>
+            <div class="ti-detail">JR嵯峨嵐山駅から徒歩10分。午後前の12〜13時台は朝の混雑が落ち着き始めるタイム。竹の間から差し込む光が柔らかく美しい。スマホをしまって、ただ歩く。これがリフレッシュ。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-price">無料</span>
+              <span class="ti-chip tc-time">20〜30分</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">13:30</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">⛩ 天龍寺 曹源池庭園 — 禅の静けさに座る</div>
+            <div class="ti-detail">
+              夢窓疎石が作庭した室町時代の名庭（世界遺産）。嵐山・亀山を借景に入れた池泉式庭園は、どの角度から眺めても完璧。縁側に座ってただぼーっと庭を眺める15〜20分が、この旅で最も「無」になれる時間。
+            </div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-price">庭園¥500</span>
+              <span class="ti-chip tc-time">⏰ 8:30〜16:50（受付終了）</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">15:00</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🍵 おやつ — 嵐山の和スイーツで小休止</div>
+            <div class="rb-opt">
+              <strong>% Arabica 嵐山</strong>
+              <p>竹林そばの世界的コーヒーショップ。ラテを手に嵐山の外気を吸う。</p>
+            </div>
+            <div class="rb-opt" style="margin-top:6px;">
+              <strong>鶴屋吉信 嵐山店</strong>
+              <p>京菓子老舗。嵐山を眺めながら和菓子と抹茶の一服。旅の余韻を甘みで刻む。</p>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">16:30</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🚃 嵐山 → 京都市内 帰路</div>
+            <div class="ti-detail">JR嵯峨嵐山→京都（快速15分・¥240）または嵐電嵐山→四条大宮（21分・¥250）。京都駅方面へ戻りハトヤ瑞鳳閣へ向かう。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">17:30</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🏨 京湯元 ハトヤ瑞鳳閣 チェックイン</div>
+            <div class="ti-detail">旅の最終宿、ハトヤ瑞鳳閣に到着（15:00〜チェックイン可）。和室でゆっくり荷解きして、天然温泉で嵐山の歩き疲れを癒す。夕食まで温泉→部屋でひと休みの最高の流れ。</div>
+            <div class="ti-chips">
+              <span class="ti-chip tc-note">♨ 天然温泉でリラックス</span>
+              <span class="ti-chip tc-note">📍 京都駅徒歩5分</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🍽 旅最後の夕食 — ホテルのそばで</div>
+        <div class="tl-item">
+          <div class="ti-time">18:30</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🍽 夕食 — 京野菜を楽しむ、ホテル徒歩圏の夕べ</div>
+            <div class="rest-box">
+              <div class="rb-header"><span class="rb-badge rbb-dinner">夕食★推薦</span><span class="rb-name">京やさい料理 接方来（京都駅ビル店）</span></div>
+              <div class="rb-meta">
+                <span>📍 京都駅ビル2F（ハトヤ瑞鳳閣から徒歩5分）</span>
+                <span>💴 ¥5,000〜¥8,000（コース・アラカルト）</span>
+                <span>⏰ 17:00〜22:00（L.O. 21:00）</span>
+                <span>👩 一人OK・カウンター席あり</span>
+              </div>
+              <div class="rb-desc">
+                京都産の旬の野菜をたっぷり使った京野菜懐石。てっぺいなす・万願寺とうがらし・京水菜など色鮮やかな京やさいを上品な出汁づかいで仕立てる。嵐山の歩き疲れをしっとりと癒す、やさしい味わい。京都駅ビル内なので食後すぐホテルへ帰れるのも嬉しい。
+              </div>
+              <div class="ti-chips" style="margin-top:8px;">
+                <span class="ti-chip tc-book">📞 予約推奨（当日でも可）</span>
+                <span class="ti-chip tc-note">食べログ・ぐるなびから予約可</span>
+              </div>
+            </div>
+            <div class="rb-opt" style="margin-top:8px;font-size:.82rem;">
+              <strong>代替案：鉄板焼 和亭 もり山（京都駅ビル内）</strong>
+              <p>和牛鉄板焼きのカウンタースタイル。目の前で焼き上げる迫力と、京都最後の夜を少し贅沢に締めくくる特別感。一人でも入りやすい雰囲気。</p>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">20:30</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🚶 夕食後 → ハトヤ瑞鳳閣へ（徒歩5分）</div>
+            <div class="ti-detail">京都駅ビルからハトヤ瑞鳳閣まで徒歩5分ほど。夜の京都駅前を軽く散策しながらゆっくり帰宿。旅の余韻を噛みしめながら歩く、最後の京都の夜道。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">21:00</div>
+          <div class="ti-content ti-dot-sleep">
+            <div class="ti-title">♨ ハトヤ瑞鳳閣 帰宿 — 温泉でしっとり旅の余韻を</div>
+            <div class="ti-detail">天然温泉にゆっくりつかって、嵐山から続く一日の疲れをほぐす。3日間の旅を振り返りながら、明日への期待と感謝を感じながら眠りにつく最後の夜。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DAY 4 ═══ -->
+  <div class="day-card" data-day="3/20">
+    <div class="day-head dh-d4">
+      <div class="day-badge">
+        <div class="db-day">DAY</div>
+        <div class="db-num">4</div>
+        <div class="db-wd">金曜日</div>
+      </div>
+      <div class="day-info">
+        <h3>3月20日 ― 最後の京都はノープラン。心の赴くまま、京都と別れを告げる日。</h3>
+        <div class="di-sub">🍱 和朝食（ハトヤ瑞鳳閣） → 🕊 終日フリータイム → 🚅 気の向いたとき新横浜へ</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+
+        <div class="tl-group-label">🍱 最後の京都の朝 — ホテルの和朝食</div>
+        <div class="tl-item">
+          <div class="ti-time">07:30</div>
+          <div class="ti-content ti-dot-food">
+            <div class="ti-title">🍱 朝食 — ハトヤ瑞鳳閣の和朝食でゆっくりと</div>
+            <div class="rest-box">
+              <div class="rb-header"><span class="rb-badge rbb-breakfast">朝食・プラン込み</span><span class="rb-name">京湯元 ハトヤ瑞鳳閣（和朝食付きプラン）</span></div>
+              <div class="rb-meta"><span>📍 ホテル内（下京区）</span><span>💴 プランに含む</span><span>⏰ 朝食時間はチェックイン時に確認</span></div>
+              <div class="rb-desc">予約プランに和朝食が含まれています。旅最後の朝は外出不要でゆっくりと。白ごはんと出汁の効いたお味噌汁、旬の小鉢が並ぶ京風和朝食で心身を整えて。今日はこの後ノープラン——この朝食が唯一の「予定」です。</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">09:30ごろ</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🏨 ハトヤ瑞鳳閣 チェックアウト（〜11:00）</div>
+            <div class="ti-detail">荷物をまとめてチェックアウト。荷物は京都駅のコインロッカーに預けるか、ヤマト運輸（駅内）で自宅へ宅配すると身軽に動ける。帰りの新幹線は気持ち次第で決めてOK。</div>
+            <div class="tip-box">💡 大きな荷物は京都駅の「手ぶら観光」サービスで当日配送（¥1,500〜）。最終日も軽やかに。</div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🕊 あとは全部フリータイム — その時の気持ちで決めていい</div>
+        <div class="tl-item">
+          <div class="ti-time">——</div>
+          <div class="ti-content ti-dot-walk">
+            <div class="ti-title">🕊 今日はノープラン。スケジュールなし、行きたい場所へ</div>
+            <div class="ti-detail">計画された時間は今日はありません。朝食を終えたら、その時の気分で動いてください。もう一度行きたかった場所に戻っても、まだ行っていなかった場所を訪れても、カフェで本を読みながら京都の空気をゆっくり吸い込むだけでも——全部正解です。</div>
+            <div class="info-box">
+              <strong>💡 もし気持ちが向いたら…のアイデア</strong>
+              <p style="margin-top:8px;">
+                ⛩ <strong>御金神社</strong>（二条城前・徒歩圏）：金色の鳥居が美しい仕事運の神社。新キャリアへの祈願を込めて。<br>
+                🎁 <strong>京都駅ビル・伊勢丹地下</strong>：お土産の買い足し。長久堂の干菓子、伊藤久右衛門の抹茶スイーツ、KYOTO TOWER SANDO限定品など。<br>
+                ☕ <strong>気になるカフェでひと息</strong>：旅で通り過ぎたあの路地、もう一度歩いてみる時間。<br>
+                🌸 <strong>梅小路公園をぼーっと散歩</strong>：昨日泊まった花伝抄そば。春の空気の中でぼんやりする贅沢な時間。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-group-label">🚅 新幹線はスマートEXで自由に — 早くても遅くてもいい</div>
+        <div class="tl-item">
+          <div class="ti-time">——</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🚅 帰りたいと思ったら、その時の新幹線に乗ればいい</div>
+            <div class="ti-detail">スマートEXで予約した新幹線は、出発前であれば何度でも無料で時間変更ができます。「もう少しいたい」と思ったら夕方便にずらして。「早く帰って荷物を整理したい」と思ったら午前中の便に変更して。最後の京都は、時計を気にせず自分のペースで。</div>
+            <div class="tip-box" style="margin-top:12px;">
+              💡 <strong>スマートEX 時間変更のやり方：</strong><br>
+              スマートEXアプリ → 予約確認 → 「変更」ボタン → 希望の時刻を選んで確定。出発前なら何度でも変更手数料なし。帰りはD席（富士山側）を選んでおくと車窓も楽しめる。
+            </div>
+            <div class="ti-chips" style="margin-top:12px;">
+              <span class="ti-chip tc-time">京都→新横浜：約2時間10分（のぞみ）</span>
+              <span class="ti-chip tc-note">早割・EX割引は事前予約でお得</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">——</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🏠 新横浜 到着。リフレッシュした、新しい自分で帰宅。</div>
+            <div class="ti-detail">3泊4日の京都旅が完結。友人との再会、神戸と大阪の街歩き、嵐山の竹林、温泉の朝——この旅で感じたことを、ぜひ大切に胸にしまって帰ってください。新しいキャリアへのエネルギーは十分に充電できたはずです。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div><!-- /days -->
+
+<!-- ══════════ TRANSPORT GUIDE ══════════ -->
+<section class="transport">
+  <div class="transport-inner">
+    <h2>🚉 交通完全ガイド</h2>
+
+    <div class="route-day">
+      <div class="rd-label">3/18 神戸〜大阪〜京都 移動ルート（詳細）</div>
+      <div class="route-steps">
+        <div class="rs-stop"><div class="rs-time">09:15</div><div class="rs-stn">京都駅</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">JR新快速 / 56分 / ¥1,110</div></div>
+        <div class="rs-stop"><div class="rs-time">10:30</div><div class="rs-stn">三ノ宮</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">散策後</div></div>
+        <div class="rs-stop"><div class="rs-time">16:30</div><div class="rs-stn">三宮</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">阪神電車 / 43分 / ¥400</div></div>
+        <div class="rs-stop"><div class="rs-time">17:13</div><div class="rs-stn">大阪難波</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">法善寺横丁で晩酌後</div></div>
+        <div class="rs-stop"><div class="rs-time">20:30</div><div class="rs-stn">難波</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">地下鉄→JR / 約50分 / ¥800</div></div>
+        <div class="rs-stop"><div class="rs-time">21:20</div><div class="rs-stn">京都</div></div>
+      </div>
+    </div>
+
+    <div class="route-day">
+      <div class="rd-label">3/19 BOTANIQ KAJIYA〜嵐山 移動ルート</div>
+      <div class="route-steps">
+        <div class="rs-stop"><div class="rs-time">10:00</div><div class="rs-stn">花伝抄 チェックアウト</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">徒歩 / 約3分</div></div>
+        <div class="rs-stop"><div class="rs-time">10:15</div><div class="rs-stn">BOTANIQ KAJIYA（ブランチ・荷物持参）</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">タクシー / 約5分 / ¥700〜900</div></div>
+        <div class="rs-stop"><div class="rs-time">12:00</div><div class="rs-stn">ハトヤ瑞鳳閣 荷物預け</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">徒歩 / 約5分</div></div>
+        <div class="rs-stop"><div class="rs-time">12:15</div><div class="rs-stn">京都駅</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">JR山陰線 / 約15分 / ¥240</div></div>
+        <div class="rs-stop"><div class="rs-time">12:35</div><div class="rs-stn">嵯峨嵐山</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">嵐山散策後 / JR山陰線 / 約15分</div></div>
+        <div class="rs-stop"><div class="rs-time">16:30</div><div class="rs-stn">京都駅 → ハトヤ瑞鳳閣</div></div>
+      </div>
+    </div>
+
+    <div class="transport-tips">
+      <h4>💳 交通カード・乗車券 活用術</h4>
+      <ul>
+        <li><strong>Suica / ICOCA</strong>：1枚で京都市バス・地下鉄・JR・阪神・阪急すべて対応。チャージは各駅自動券売機で。</li>
+        <li><strong>地下鉄・バス一日乗車券（¥1,100）</strong>：3/19は嵐山メインなのでJR利用が中心。市バスを2〜3回使う日はお得になる。</li>
+        <li><strong>JR嵐山（嵯峨嵐山）へのアクセス</strong>：京都駅からJR山陰本線（嵯峨野線）で約15〜17分・¥240。本数多く便利。</li>
+        <li><strong>大阪→京都の帰路（前日）</strong>：難波→梅田（地下鉄御堂筋線 約10分）→ JR大阪→京都（新快速 約29分）が最もスムーズ。</li>
+        <li><strong>タクシー活用</strong>：嵐山エリア内（竹林→天龍寺など）は徒歩でOK。嵐山→京都駅は電車が便利。疲れたらタクシーも¥2,500〜3,000程度。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TIPS ══════════ -->
+<section class="tips-section">
+  <div class="tips-inner">
+    <span class="section-label">Travel Tips</span>
+    <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:300;letter-spacing:.1em;color:var(--ink);">旅をより豊かにするアドバイス</h2>
+    <div class="tips-grid">
+      <div class="tips-card">
+        <h4>🌸 3月の京都・気候</h4>
+        <ul>
+          <li>最高気温14〜18℃、最低4〜8℃。朝晩の気温差大</li>
+          <li>薄手のコート or 脱ぎ着しやすいジャケット必須</li>
+          <li>折りたたみ傘を必ず携帯（4月並みの突然の雨も）</li>
+          <li>3月中旬は梅が見頃。早咲き桜は下旬から</li>
+          <li>晴れの日が多く、散策日和が続きやすい</li>
+        </ul>
+      </div>
+      <div class="tips-card">
+        <h4>👩 女性一人旅の安心Tips</h4>
+        <ul>
+          <li>京都・神戸は国内屈指の安全エリア</li>
+          <li>夜の移動は明るい大通りを選択（祇園・先斗町も安全）</li>
+          <li>ホテルはフロントに緊急連絡先を伝えておくと安心</li>
+          <li>大阪の夜は早め（21時前）に撤収がベスト</li>
+          <li>モバイルバッテリーと予備の充電ケーブルを忘れずに</li>
+        </ul>
+      </div>
+      <div class="tips-card">
+        <h4>📱 便利アプリ・サービス</h4>
+        <ul>
+          <li>Yahoo!乗換案内：電車・バスの経路検索</li>
+          <li>Google Maps：歩き案内に最適</li>
+          <li>一休.com / ぐるなび：レストラン予約</li>
+          <li>楽天トラベル：ホテル予約・ポイント管理</li>
+          <li>EX予約アプリ：新幹線予約・変更が簡単</li>
+        </ul>
+      </div>
+      <div class="tips-card">
+        <h4>⚠️ 予約必須リスト</h4>
+        <ul>
+          <li>【✅ 予約済】花伝抄（3/17〜19）＋ ハトヤ瑞鳳閣（3/19〜20）</li>
+          <li>【早め】3/19夕食 接方来 京都駅ビル店（ぐるなび・食べログで予約可）</li>
+          <li>【早め】3/18神戸ランチ モーリヤ本店</li>
+          <li>【早め】3/18神戸ランチ モーリヤ本店</li>
+          <li>新幹線（EX予約で割引）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ OMIYAGE ══════════ -->
+<section class="omiyage">
+  <div class="omiyage-inner">
+    <span class="section-label">Omiyage Guide</span>
+    <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:300;letter-spacing:.1em;color:var(--ink);">🎁 お土産ガイド</h2>
+    <div class="omiyage-grid">
+      <div class="om-card">
+        <span class="om-badge omb-kyoto">京都 定番</span>
+        <h4>出町ふたばの豆餅</h4>
+        <p>京都人が行列を作る名物。生菓子なので当日中が基本。帰り道に出町柳に寄り道を。</p>
+      </div>
+      <div class="om-card">
+        <span class="om-badge omb-kyoto">京都 上品</span>
+        <h4>長久堂の干菓子</h4>
+        <p>上品な干菓子は職場へのお土産にも最適。京都駅伊勢丹でも購入可能。</p>
+      </div>
+      <div class="om-card">
+        <span class="om-badge omb-kyoto">京都 老舗</span>
+        <h4>鍵善良房 葛切りセット</h4>
+        <p>祇園の老舗和菓子店。葛粉・葛菓子のお土産用セットは贈り物にも。</p>
+      </div>
+      <div class="om-card">
+        <span class="om-badge omb-limited">3月限定</span>
+        <h4>季節の上生菓子</h4>
+        <p>嘯月（しょうげつ）など京都の和菓子店の3月限定・春の上生菓子。要予約の場合も。</p>
+      </div>
+      <div class="om-card">
+        <span class="om-badge omb-kobe">神戸</span>
+        <h4>神戸風月堂のゴーフル</h4>
+        <p>神戸を代表するお土産菓子。散策中にハーバーランド店で購入を。</p>
+      </div>
+      <div class="om-card">
+        <span class="om-badge omb-kyoto">自分へのご褒美</span>
+        <h4>有次（ありつぐ）の料理道具</h4>
+        <p>錦市場の老舗。良質な包丁・おろし金・竹べらなど。転職前の自分へのプレゼントに。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RESERVATION ALERT ══════════ -->
+<section class="reservation-section">
+  <div class="reservation-inner">
+    <h2>📋 予約アクション一覧</h2>
+    <div class="res-grid">
+      <div class="res-card" style="border-color:rgba(80,160,80,.4);background:rgba(80,160,80,.06);">
+        <span class="res-urgency" style="background:#d4edda;color:#2d6a4f;border:1px solid rgba(80,160,80,.4);">✅ 予約確定済み</span>
+        <h4>宿泊（2ホテル）</h4>
+        <p>梅小路 花伝抄（3/17〜19・2泊）＋ 京湯元 ハトヤ瑞鳳閣（3/19〜20・1泊）で確定。予約番号：RYa0mh2p2j / RYa0mh2r0k。安心して旅を楽しんで！</p>
+      </div>
+      <div class="res-card">
+        <span class="res-urgency ru-soon">🔶 早めに予約</span>
+        <h4>3/17 夕食（友人お任せ）</h4>
+        <p>京都在住の友人が店を選んでくれる。自分での予約は不要。18:30 に京都タワー店のスタバで待ち合わせだけ確認しておこう。</p>
+      </div>
+      <div class="res-card">
+        <span class="res-urgency ru-soon">🔶 早めに予約</span>
+        <h4>3/19 夕食（接方来 京都駅ビル店）</h4>
+        <p>京野菜料理の人気店。食べログ・ぐるなびから予約可。18:30〜 の枠を早めに押さえると安心。</p>
+      </div>
+      <div class="res-card">
+        <span class="res-urgency ru-soon">🔶 早めに予約</span>
+        <h4>3/18 神戸ランチ（モーリヤ）</h4>
+        <p>神戸牛の老舗は観光客で混む。ランチは11:30〜 or 12:00〜 を狙って早めの予約を。</p>
+      </div>
+      <div class="res-card">
+        <span class="res-urgency ru-ok">✅ 余裕あり</span>
+        <h4>新幹線（EX予約）</h4>
+        <p>EX予約 or スマートEXで出発の1〜2週間前までに予約。E席（往路・富士山側）を指定。3/17午前・3/20午前の列車を押さえる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CHECKLIST ══════════ -->
+<section class="checklist">
+  <div class="checklist-inner">
+    <span class="section-label">Packing Checklist</span>
+    <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:300;letter-spacing:.1em;color:var(--ink);">🧳 持ち物チェックリスト</h2>
+    <div class="check-grid">
+      <div class="check-col">
+        <h4>👗 服装・身だしなみ</h4>
+        <ul>
+          <li>薄手のコートまたはジャケット</li>
+          <li>セーター・カーディガン（重ね着用）</li>
+          <li>歩きやすいシューズ（石畳対策）</li>
+          <li>折りたたみ傘</li>
+          <li>ストール（夜の冷え込み対策）</li>
+          <li>夕食用のきれいめワンピース</li>
+        </ul>
+      </div>
+      <div class="check-col">
+        <h4>📱 デジタル</h4>
+        <ul>
+          <li>スマートフォン・充電器</li>
+          <li>モバイルバッテリー</li>
+          <li>イヤホン（新幹線用）</li>
+          <li>Suica / ICOCA（チャージ確認）</li>
+          <li>EX予約アプリ（ログイン確認）</li>
+        </ul>
+      </div>
+      <div class="check-col">
+        <h4>💊 健康・コンフォート</h4>
+        <ul>
+          <li>常備薬・胃薬</li>
+          <li>絆創膏（石畳で靴擦れ対策）</li>
+          <li>お気に入りの入浴剤</li>
+          <li>マスク（花粉症対策）</li>
+          <li>日焼け止め（春の日差し）</li>
+        </ul>
+      </div>
+      <div class="check-col">
+        <h4>📋 書類・予約</h4>
+        <ul>
+          <li>ホテル予約確認書</li>
+          <li>3/19夕食 接方来 予約確認</li>
+          <li>レストラン予約メモ</li>
+          <li>新幹線予約確認</li>
+          <li>楽天ポイントカード・アプリ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="f-icon">🌸</div>
+  <h3>あなたの新しいステージへ</h3>
+  <p>
+    転職という大きな挑戦の前に、この旅でどうか心身を満たしてください。<br>
+    梅の香り、竹林の静けさ、湯豆腐の温かさ、神戸の海風——<br>
+    京都が教えてくれるのは、いつも「今、ここにいること」の大切さ。<br><br>
+    <strong style="color:var(--gold-lt);">最高の旅を。そして、最高の新しいスタートを。</strong>
+  </p>
+  <div class="f-note">
+    本プランは4つの専門エージェント（プランナー統括・食事マスター・余暇マスター・宿マスター）による徹底調査に基づき作成。<br>
+    2026年3月17日(火)〜20日(金) 3泊4日 京都・神戸・大阪 リフレッシュ旅行プラン
+  </div>
+</footer>
+
+<script>
+// 花びらアニメーション
+(function(){
+  const container = document.getElementById('petals');
+  const symbols = ['🌸','🌺','✿','❀','🌷'];
+  for(let i=0;i<18;i++){
+    const p = document.createElement('div');
+    p.className='petal';
+    p.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    p.style.left = (Math.random()*100)+'%';
+    p.style.animationDuration = (6+Math.random()*10)+'s';
+    p.style.animationDelay = (Math.random()*8)+'s';
+    p.style.fontSize = (10+Math.random()*16)+'px';
+    container.appendChild(p);
+  }
+})();
+</script>
+
+<script>
+// 食事ブロックに「他の候補を見る」リンクを自動注入
+(function() {
+  // DAY4の朝食はホテルプラン込みのためリンク不要（除外ワード）
+  const skipKeywords = ['プラン込み', 'ハトヤ瑞鳳閣（和朝食'];
+
+  document.querySelectorAll('.day-card[data-day]').forEach(dayCard => {
+    const day = dayCard.getAttribute('data-day');
+    const encoded = encodeURIComponent(day);
+
+    dayCard.querySelectorAll('.rest-box').forEach(box => {
+      // スキップ判定
+      const headerText = box.querySelector('.rb-header') ? box.querySelector('.rb-header').textContent : '';
+      if (skipKeywords.some(kw => headerText.includes(kw))) return;
+
+      // すでにリンクがあればスキップ
+      if (box.querySelector('.food-alt-link')) return;
+
+      const linkDiv = document.createElement('div');
+      linkDiv.className = 'food-alt-link';
+      linkDiv.style.cssText = 'margin-top:10px;padding-top:10px;border-top:1px dashed rgba(184,147,90,.35);';
+      linkDiv.innerHTML = `<a href="food.html?date=${encoded}" style="display:inline-flex;align-items:center;gap:5px;font-size:.74rem;color:#b8935a;text-decoration:none;border:1px solid rgba(184,147,90,.45);padding:4px 12px;border-radius:20px;background:rgba(184,147,90,.06);transition:background .2s;" onmouseover="this.style.background='rgba(184,147,90,.14)'" onmouseout="this.style.background='rgba(184,147,90,.06)'">🍽 ${day} の他の候補を見る →</a>`;
+      box.appendChild(linkDiv);
+    });
+  });
+})();
+</script>
+</body>
+</html>
