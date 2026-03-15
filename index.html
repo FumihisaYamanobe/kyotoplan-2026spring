@@ -813,11 +813,13 @@ footer .f-note{
 .ru-now{background:rgba(200,50,50,.25);color:#ff9090;}
 .ru-soon{background:rgba(200,140,50,.25);color:#ffb870;}
 .ru-ok{background:rgba(80,150,80,.25);color:#90d090;}
+.ru-done{background:rgba(40,180,100,.3);color:#6effa8;border:1px solid rgba(40,180,100,.4);}
 .res-card h4{
   font-size:.92rem;color:#fff;margin-bottom:6px;
 }
 .res-card p{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.7;}
 </style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -845,13 +847,13 @@ footer .f-note{
 </section>
 
 <!-- ══════════ SUB-NAV ══════════ -->
-<nav style="background:#1a1510;border-bottom:1px solid rgba(184,147,90,.25);position:sticky;top:0;z-index:100;">
-  <div style="max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:0;overflow-x:auto;">
-    <span style="font-size:.68rem;letter-spacing:.15em;color:rgba(255,255,255,.3);white-space:nowrap;padding:14px 16px 14px 0;border-right:1px solid rgba(255,255,255,.1);margin-right:8px;">ガイド</span>
-    <a href="index.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:#d4ae7a;white-space:nowrap;border-bottom:2px solid #d4ae7a;">📋 旅程プラン</a>
-    <a href="food.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🍽 食事候補</a>
-    <a href="leisure.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🌸 観光候補</a>
-    <a href="omiyage.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🎁 お土産候補</a>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <span class="nav-label">ガイド</span>
+    <a href="index.html"   class="nav-link active">📋 旅程プラン</a>
+    <a href="food.html"    class="nav-link">🍽 食事候補</a>
+    <a href="leisure.html" class="nav-link">🌸 観光候補</a>
+    <a href="omiyage.html" class="nav-link">🎁 お土産候補</a>
   </div>
 </nav>
 
@@ -884,17 +886,17 @@ footer .f-note{
     <div class="route-day" style="margin-bottom:28px;">
       <div class="rd-label">▶ 往路 3/17(火) — 新横浜 → 京都</div>
       <div class="route-steps">
-        <div class="rs-stop"><div class="rs-time">09:33</div><div class="rs-stn">新横浜</div></div>
-        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">のぞみ / 2h11m</div></div>
-        <div class="rs-stop"><div class="rs-time">11:44</div><div class="rs-stn">京都</div></div>
+        <div class="rs-stop"><div class="rs-time">09:07</div><div class="rs-stn">新横浜</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">のぞみ / 1h53m</div></div>
+        <div class="rs-stop"><div class="rs-time">11:00</div><div class="rs-stn">京都</div></div>
       </div>
     </div>
     <div class="route-day">
       <div class="rd-label">◀ 復路 3/20(金) — 京都 → 新横浜</div>
       <div class="route-steps">
-        <div class="rs-stop"><div class="rs-time">11:03</div><div class="rs-stn">京都</div></div>
-        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">のぞみ / 2h10m</div></div>
-        <div class="rs-stop"><div class="rs-time">13:13</div><div class="rs-stn">新横浜</div></div>
+        <div class="rs-stop"><div class="rs-time">15:01</div><div class="rs-stn">京都</div></div>
+        <div class="rs-arrow"><div class="ra-bar"></div><div class="ra-info">のぞみ / 1h55m</div></div>
+        <div class="rs-stop"><div class="rs-time">16:56</div><div class="rs-stn">新横浜</div></div>
       </div>
     </div>
     <div class="shinkansen-tips">
@@ -1018,26 +1020,26 @@ footer .f-note{
 
         <div class="tl-group-label">🚅 移動</div>
         <div class="tl-item">
-          <div class="ti-time">08:45</div>
+          <div class="ti-time">08:20</div>
           <div class="ti-content ti-dot-train">
             <div class="ti-title">新横浜駅 到着・改札へ</div>
             <div class="ti-detail">出発45分前到着で余裕を。コンビニで新幹線用のお茶・軽食を購入。ホームでE席（富士山側）を確認しておく。</div>
           </div>
         </div>
         <div class="tl-item">
-          <div class="ti-time">09:33</div>
+          <div class="ti-time">09:07</div>
           <div class="ti-content ti-dot-train">
             <div class="ti-title">🚅 のぞみ 乗車（E席推奨）</div>
-            <div class="ti-detail">2時間11分の旅。出発後約44分で富士山が見えてくる（新富士駅付近）。これが最初のリフレッシュ体験。スマホをしまって、車窓を楽しんで。</div>
+            <div class="ti-detail">1時間53分の旅。出発後約44分で富士山が見えてくる（新富士駅付近）。これが最初のリフレッシュ体験。スマホをしまって、車窓を楽しんで。</div>
             <div class="ti-chips">
-              <span class="ti-chip tc-time">富士山→約10:17頃</span>
+              <span class="ti-chip tc-time">富士山→約09:51頃</span>
               <span class="ti-chip tc-price">指定席¥13,050</span>
               <span class="ti-chip tc-note">グリーン車+¥5,190</span>
             </div>
           </div>
         </div>
         <div class="tl-item">
-          <div class="ti-time">11:44</div>
+          <div class="ti-time">11:00</div>
           <div class="ti-content ti-dot-train">
             <div class="ti-title">🏯 京都駅 到着！</div>
             <div class="ti-detail">荷物をホテルに預ける（ほとんどのホテルでチェックイン前預けOK）。身軽になって散策へ。</div>
@@ -1559,7 +1561,7 @@ footer .f-note{
       </div>
       <div class="day-info">
         <h3>3月20日 ― 最後の京都はノープラン。心の赴くまま、京都と別れを告げる日。</h3>
-        <div class="di-sub">🍱 和朝食（ハトヤ瑞鳳閣） → 🕊 終日フリータイム → 🚅 気の向いたとき新横浜へ</div>
+        <div class="di-sub">🍱 和朝食（ハトヤ瑞鳳閣） → 🕊 終日フリータイム → 🚅 15:01 のぞみで新横浜へ</div>
       </div>
     </div>
     <div class="day-body">
@@ -1604,24 +1606,30 @@ footer .f-note{
           </div>
         </div>
 
-        <div class="tl-group-label">🚅 新幹線はスマートEXで自由に — 早くても遅くてもいい</div>
+        <div class="tl-group-label">🚅 帰りの新幹線 — 京都 15:01 発</div>
         <div class="tl-item">
-          <div class="ti-time">——</div>
+          <div class="ti-time">14:30</div>
           <div class="ti-content ti-dot-train">
-            <div class="ti-title">🚅 帰りたいと思ったら、その時の新幹線に乗ればいい</div>
-            <div class="ti-detail">スマートEXで予約した新幹線は、出発前であれば何度でも無料で時間変更ができます。「もう少しいたい」と思ったら夕方便にずらして。「早く帰って荷物を整理したい」と思ったら午前中の便に変更して。最後の京都は、時計を気にせず自分のペースで。</div>
+            <div class="ti-title">京都駅へ移動・乗車準備</div>
+            <div class="ti-detail">出発30分前には改札へ。荷物をコインロッカーから回収しておく。駅ビルのお土産売り場は直前でも立ち寄れる。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="ti-time">15:01</div>
+          <div class="ti-content ti-dot-train">
+            <div class="ti-title">🚅 のぞみ 乗車（D席推奨 — 富士山側）</div>
+            <div class="ti-detail">1時間55分の旅。帰りはD席（富士山側）で車窓を楽しみながら旅の余韻に浸って。</div>
             <div class="tip-box" style="margin-top:12px;">
-              💡 <strong>スマートEX 時間変更のやり方：</strong><br>
-              スマートEXアプリ → 予約確認 → 「変更」ボタン → 希望の時刻を選んで確定。出発前なら何度でも変更手数料なし。帰りはD席（富士山側）を選んでおくと車窓も楽しめる。
+              💡 <strong>スマートEX 時間変更：</strong>出発前であれば何度でも無料で変更可。「もう少しいたい」と思ったらアプリから変更を。
             </div>
             <div class="ti-chips" style="margin-top:12px;">
-              <span class="ti-chip tc-time">京都→新横浜：約2時間10分（のぞみ）</span>
-              <span class="ti-chip tc-note">早割・EX割引は事前予約でお得</span>
+              <span class="ti-chip tc-time">京都 15:01 → 新横浜 16:56</span>
+              <span class="ti-chip tc-note">お預かり番号 2014</span>
             </div>
           </div>
         </div>
         <div class="tl-item">
-          <div class="ti-time">——</div>
+          <div class="ti-time">16:56</div>
           <div class="ti-content ti-dot-train">
             <div class="ti-title">🏠 新横浜 到着。リフレッシュした、新しい自分で帰宅。</div>
             <div class="ti-detail">3泊4日の京都旅が完結。友人との再会、神戸と大阪の街歩き、嵐山の竹林、温泉の朝——この旅で感じたことを、ぜひ大切に胸にしまって帰ってください。新しいキャリアへのエネルギーは十分に充電できたはずです。</div>
@@ -1802,9 +1810,9 @@ footer .f-note{
         <p>神戸牛の老舗は観光客で混む。ランチは11:30〜 or 12:00〜 を狙って早めの予約を。</p>
       </div>
       <div class="res-card">
-        <span class="res-urgency ru-ok">✅ 余裕あり</span>
-        <h4>新幹線（EX予約）</h4>
-        <p>EX予約 or スマートEXで出発の1〜2週間前までに予約。E席（往路・富士山側）を指定。3/17午前・3/20午前の列車を押さえる。</p>
+        <span class="res-urgency ru-done">✅ 予約済み</span>
+        <h4>新幹線（スマートEX）</h4>
+        <p>往路：新横浜 9:07 → 京都 11:00（お預かり番号 2013）<br>復路：京都 15:01 → 新横浜 16:56（お預かり番号 2014）<br>往路E席・復路D席（富士山側）を確認しておく。</p>
       </div>
     </div>
   </div>

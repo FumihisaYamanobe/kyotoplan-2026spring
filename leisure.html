@@ -3,336 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>京都・神戸旅行プラン - 余暇スポット</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>観光スポットガイド — 春の京都旅 2026</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+/* ── leisure.html page-specific styles ── */
+:root {
+  --page-accent:      #2d5e35;
+  --page-accent-dark: #1f4028;
+  --page-accent-pale: #e8f3e8;
+}
 
-        body {
-            font-family: 'Noto Serif JP', 'Noto Sans JP', serif, sans-serif;
-            background: linear-gradient(135deg, #f5f1ed 0%, #e8dcc8 100%);
-            color: #333;
-            line-height: 1.8;
-        }
+/* Container */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+/* Spot card — extends shared .card with left accent border */
+.spot-card {
+  border-left: 4px solid var(--gold);
+}
+.spot-card:hover { transform: translateY(-3px); }
 
-        header {
-            background: linear-gradient(135deg, #2d5a3d 0%, #4a7c5e 100%);
-            color: #f5f1ed;
-            padding: 40px 30px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
+/* Spot header overrides */
+.spot-header {
+  position: relative;
+}
+.spot-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.spot-subtitle {
+  font-size: .76rem;
+  color: #9a8a75;
+  letter-spacing: .05em;
+  margin-bottom: 8px;
+}
+.badge-row { margin-top: 8px; }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,30 Q40,20 60,30 T100,30" stroke="rgba(245,241,237,0.1)" fill="none" stroke-width="0.5"/><path d="M20,50 Q40,40 60,50 T100,50" stroke="rgba(245,241,237,0.1)" fill="none" stroke-width="0.5"/><path d="M20,70 Q40,60 60,70 T100,70" stroke="rgba(245,241,237,0.1)" fill="none" stroke-width="0.5"/></svg>');
-            background-repeat: repeat;
-        }
+/* Badge color overrides for leisure */
+.badge.area     { background: var(--gold-pale); color: #6a5030; border: 1px solid rgba(184,147,90,.3); }
+.badge.category { background: #e8f3e8; color: #2a5a2a; border: 1px solid #90c090; }
+.badge.day      { background: #e8f0f8; color: #2a4a70; border: 1px solid #a0c0e0; }
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
+/* Info rows */
+.info-grid { margin: 12px 0 8px; }
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0e8d8;
+  font-size: .82rem;
+}
+.info-row:last-child { border-bottom: none; }
+.info-label {
+  font-size: .72rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: .04em;
+  min-width: 56px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+.info-value { color: #5a4a38; flex: 1; line-height: 1.65; }
 
-        header p {
-            font-size: 1.1em;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
+/* March highlight box */
+.highlight {
+  background: linear-gradient(135deg, var(--gold-pale), #faf0e0);
+  border: 1px solid rgba(184,147,90,.25);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-top: 12px;
+  font-size: .8rem;
+  color: #5a4020;
+  line-height: 1.75;
+}
+.highlight strong { color: var(--umber); }
 
-        .back-button {
-            display: inline-block;
-            margin-bottom: 30px;
-            padding: 12px 25px;
-            background: #d4a574;
-            color: #2d5a3d;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid #c49063;
-        }
+/* Section intro */
+.section-intro {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  font-size: .84rem;
+  color: #5a4a38;
+  line-height: 1.8;
+}
+.section-intro strong { color: var(--ink); }
 
-        .back-button:hover {
-            background: #c49063;
-            color: #f5f1ed;
-            transform: translateY(-2px);
-        }
+/* Section header */
+.section-header {
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+.section-header h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 300;
+  color: var(--ink);
+  letter-spacing: .1em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(184,147,90,.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-        .controls {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+/* Cards grid */
+.spots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 36px;
+}
 
-        .filter-group {
-            margin-bottom: 20px;
-        }
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.btn {
+  flex: 1;
+  min-width: 100px;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: .78rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all .2s;
+  border: 1.5px solid var(--gold);
+  background: transparent;
+  color: #6a5030;
+  letter-spacing: .03em;
+  font-family: 'Noto Sans JP', sans-serif;
+  display: inline-block;
+}
+.btn:hover { background: var(--gold); color: #fff; transform: translateY(-1px); }
+.btn-primary { background: var(--gold); color: #fff; border-color: var(--gold); }
+.btn-primary:hover { background: var(--gold-lt); border-color: var(--gold-lt); transform: translateY(-1px); }
+.btn-secondary { background: transparent; color: var(--umber); border-color: var(--border); }
+.btn-secondary:hover { background: var(--off); border-color: var(--gold); color: var(--gold); }
 
-        .filter-group label {
-            display: block;
-            font-weight: bold;
-            color: #2d5a3d;
-            margin-bottom: 12px;
-            font-size: 1.05em;
-        }
+/* Filter controls */
+.controls { margin-bottom: 28px; }
+.filter-group { margin-bottom: 12px; }
+.filter-group label {
+  display: block;
+  font-size: .72rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: .1em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.filter-options { display: flex; flex-wrap: wrap; gap: 6px; }
+.filter-btn {
+  padding: 6px 14px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: #6a5a45;
+  font-size: .76rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+.filter-btn.active { background: var(--gold); color: #fff; border-color: var(--gold); }
 
-        .filter-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+/* No results */
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #9a8a75;
+  display: none;
+}
 
-        .filter-btn {
-            padding: 8px 18px;
-            border: 2px solid #d4a574;
-            background: white;
-            color: #2d5a3d;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
+/* Rating */
+.rating { color: var(--gold); font-size: .85rem; margin-top: 4px; }
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #d4a574;
-            color: white;
-            border-color: #c49063;
-        }
-
-        .spots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .spot-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border-left: 5px solid #d4a574;
-        }
-
-        .spot-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .spot-header {
-            padding: 25px;
-            background: linear-gradient(135deg, #f5f1ed 0%, #e8dcc8 100%);
-            border-bottom: 2px solid #d4a574;
-        }
-
-        .spot-title {
-            font-size: 1.5em;
-            color: #2d5a3d;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .badge-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.85em;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .badge.area {
-            background: #2d5a3d;
-            color: white;
-        }
-
-        .badge.category {
-            background: #d4a574;
-            color: white;
-        }
-
-        .spot-content {
-            padding: 25px;
-        }
-
-        .info-row {
-            display: flex;
-            margin-bottom: 15px;
-            font-size: 0.95em;
-        }
-
-        .info-label {
-            font-weight: bold;
-            color: #2d5a3d;
-            min-width: 110px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .info-label::after {
-            content: ':';
-            margin-right: 8px;
-        }
-
-        .info-value {
-            color: #555;
-            flex: 1;
-        }
-
-        .march-highlight {
-            background: #fef3cd;
-            border-left: 3px solid #f4c430;
-            padding: 12px;
-            margin: 15px 0;
-            border-radius: 6px;
-            font-size: 0.95em;
-            color: #333;
-        }
-
-        .march-highlight strong {
-            color: #e74c3c;
-        }
-
-        .rating {
-            color: #f4c430;
-            font-weight: bold;
-            font-size: 1em;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 12px 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.3s ease;
-            font-size: 0.95em;
-        }
-
-        .btn-primary {
-            background: #2d5a3d;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #1f4028;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: #d4a574;
-            color: #2d5a3d;
-        }
-
-        .btn-secondary:hover {
-            background: #c49063;
-            color: white;
-        }
-
-        .section-title {
-            font-size: 1.8em;
-            color: #2d5a3d;
-            margin: 50px 0 30px 0;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #d4a574;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: #999;
-            font-size: 1.1em;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #666;
-            border-top: 2px solid #d4a574;
-            margin-top: 50px;
-        }
-
-        @media (max-width: 768px) {
-            .spots-grid {
-                grid-template-columns: 1fr;
-            }
-
-            header h1 {
-                font-size: 1.8em;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-
-            .filter-options {
-                gap: 8px;
-            }
-
-            .filter-btn {
-                padding: 6px 14px;
-                font-size: 0.9em;
-            }
-        }
-    </style>
+/* Responsive */
+@media(max-width:640px) {
+  .container { padding: 18px 14px 60px; }
+  .spots-grid { grid-template-columns: 1fr; gap: 14px; }
+  .section-header h2 { font-size: .96rem; }
+  .filter-btn { font-size: .7rem; padding: 5px 10px; }
+}
+</style>
 </head>
 <body>
-    <nav style="background:#1a1510;border-bottom:1px solid rgba(184,147,90,.25);position:sticky;top:0;z-index:100;">
-      <div style="max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:0;overflow-x:auto;">
-        <span style="font-size:.68rem;letter-spacing:.15em;color:rgba(255,255,255,.3);white-space:nowrap;padding:14px 16px 14px 0;border-right:1px solid rgba(255,255,255,.1);margin-right:8px;">ガイド</span>
-        <a href="index.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">📋 旅程プラン</a>
-        <a href="food.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🍽 食事候補</a>
-        <a href="leisure.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:#d4ae7a;white-space:nowrap;border-bottom:2px solid #d4ae7a;">🌸 観光候補</a>
-        <a href="omiyage.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🎁 お土産候補</a>
+    <nav class="site-nav">
+      <div class="site-nav-inner">
+        <span class="nav-label">ガイド</span>
+        <a href="index.html"   class="nav-link">📋 旅程プラン</a>
+        <a href="food.html"    class="nav-link">🍽 食事候補</a>
+        <a href="leisure.html" class="nav-link active">🌸 観光候補</a>
+        <a href="omiyage.html" class="nav-link">🎁 お土産候補</a>
       </div>
     </nav>
     <div class="container">
-        <a href="index.html" class="back-button">← メインページに戻る</a>
-
-        <header>
-            <h1>🌸 京都・神戸 余暇スポット</h1>
-            <p>3月の早春を彩る、心ときめく観光地とカフェをご紹介</p>
+        <header class="page-hero" style="margin:-32px -20px 36px;border-radius:0;">
+          <div class="page-hero-inner">
+            <span class="page-hero-eyebrow">Leisure Guide · 2026 Spring</span>
+            <h1 class="page-hero-title">🌸 <em>観光スポットガイド</em></h1>
+            <p class="page-hero-subtitle">京都・神戸 — 早春の心ときめく旅先セレクション</p>
+            <div class="page-hero-divider"></div>
+          </div>
         </header>
+
+        <a href="index.html" class="back-button">← 旅程プランへ戻る</a>
 
         <div class="controls">
             <div class="filter-group">
