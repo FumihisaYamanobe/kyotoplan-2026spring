@@ -658,13 +658,129 @@ footer .f-note{
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:640px){
-  .day-head{grid-template-columns:auto 1fr;gap:14px;padding:20px 18px;}
-  .tl-item{grid-template-columns:56px 1fr;padding:0 18px;}
-  .tl-item::before{left:77px;}
+
+  /* ── Days section ── */
+  .days{padding:14px 14px 60px;}
+  .day-card{margin-bottom:28px;border-radius:16px;}
+
+  /* ── Day header: compact ── */
+  .day-head{
+    grid-template-columns:auto 1fr;
+    gap:10px;padding:12px 14px;
+  }
+  .day-badge{min-width:48px;padding:6px 10px;border-radius:10px;}
+  .db-day,.db-wd{font-size:.56rem;letter-spacing:.08em;}
+  .db-num{font-size:1.35rem;}
+  .day-info h3{font-size:.9rem;margin-bottom:2px;line-height:1.35;}
+  .day-info .di-sub{
+    font-size:.68rem;opacity:.65;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    max-width:100%;
+  }
+
+  /* ── Timeline ── */
+  .tl-item{grid-template-columns:48px 1fr;padding:0 14px;}
+  .tl-item::before{left:65px;}
   .timeline{padding-bottom:16px;}
-  .tl-group-label{padding:16px 18px 6px;}
-  .hotel-card-body{padding:18px;}
-  .shinkansen-route{gap:0;}
+  .tl-group-label{padding:14px 14px 6px;font-size:.62rem;letter-spacing:.18em;}
+  .ti-time{font-size:.72rem;padding-right:10px;}
+  .ti-title{font-size:.88rem;}
+  .ti-detail{font-size:.78rem;}
+  .ti-content{padding:12px 0 12px 18px;}
+  .ti-chips{gap:4px;}
+  .ti-chip{font-size:.65rem;padding:2px 8px;}
+
+  /* ── Hotel ── */
+  .hotel-card-body{padding:16px;}
+  .hotel-grid{grid-template-columns:1fr;}
+
+  /* ── Shinkansen banner ── */
+  .shinkansen-route{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0;overflow-x:visible;
+    padding-bottom:0;
+  }
+  .stn{
+    display:flex;align-items:center;
+    gap:10px;text-align:left;
+    padding:4px 0;
+  }
+  .stn-time{font-size:1.1rem;line-height:1;}
+  .stn-name,.stn-platform{margin-top:0;}
+  .route-line{
+    flex-direction:row;min-width:auto;
+    padding:4px 12px;
+  }
+  .rl-bar{width:20px;}
+  .rl-info{font-size:.62rem;}
+
+  /* ── Transport guide — vertical route ── */
+  .route-steps{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0;
+  }
+  .rs-stop{
+    width:100%;
+    display:flex;align-items:center;
+    gap:10px;text-align:left;
+    border-radius:8px;padding:9px 12px;
+  }
+  .rs-time{font-size:.92rem;font-weight:600;min-width:40px;}
+  .rs-stn{font-size:.7rem;margin-top:0;}
+  .rs-arrow{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:2px 20px;gap:1px;
+  }
+  .rs-arrow .ra-bar{
+    width:1px;height:18px;
+    background:rgba(184,147,90,.7);
+    position:relative;
+  }
+  .rs-arrow .ra-bar::after{
+    content:'▼';font-size:.5rem;
+    position:absolute;
+    bottom:-6px;left:-4px;
+    top:auto;right:auto;
+    color:var(--gold);
+  }
+  .rs-arrow .ra-info{
+    font-size:.65rem;
+    white-space:normal;
+    color:rgba(255,255,255,.5);
+  }
+
+  /* ── Concept section ── */
+  .concept{padding:50px 18px;}
+  .concept p{text-align:left;font-size:.88rem;}
+  .concept p br{display:none;}
+  .concept-line{display:block;margin-bottom:.5em;}
+  .concept-cards{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;margin-top:30px;
+  }
+  .concept-card{padding:16px 12px;}
+  .concept-card .cc-icon{font-size:1.4rem;}
+
+  /* ── Rest/food boxes ── */
+  .rest-box{padding:12px 13px;}
+  .rb-meta{gap:5px;font-size:.7rem;}
+  .rb-desc{font-size:.78rem;}
+
+  /* ── Reservation ── */
+  .res-grid{grid-template-columns:1fr;}
+
+  /* ── Tips ── */
+  .tips-grid{grid-template-columns:1fr;}
+  .check-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+/* Extra tight for very small phones */
+@media(max-width:375px){
+  .day-info h3{font-size:.82rem;}
+  .day-info .di-sub{display:none;}
 }
 
 /* ─── RESERVATION ALERT ─── */
@@ -732,7 +848,7 @@ footer .f-note{
 <nav style="background:#1a1510;border-bottom:1px solid rgba(184,147,90,.25);position:sticky;top:0;z-index:100;">
   <div style="max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:0;overflow-x:auto;">
     <span style="font-size:.68rem;letter-spacing:.15em;color:rgba(255,255,255,.3);white-space:nowrap;padding:14px 16px 14px 0;border-right:1px solid rgba(255,255,255,.1);margin-right:8px;">ガイド</span>
-    <a href="kyoto_perfect_plan.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:#d4ae7a;white-space:nowrap;border-bottom:2px solid #d4ae7a;">📋 旅程プラン</a>
+    <a href="index.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:#d4ae7a;white-space:nowrap;border-bottom:2px solid #d4ae7a;">📋 旅程プラン</a>
     <a href="food.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🍽 食事候補</a>
     <a href="leisure.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🌸 観光候補</a>
     <a href="omiyage.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🎁 お土産候補</a>
@@ -746,10 +862,10 @@ footer .f-note{
     <h2>仕事を忘れ、<br>自分を取り戻す旅へ</h2>
     <div class="concept-divider"></div>
     <p>
-      転職という大きな決断を前に、2週間という贈り物のような休暇がある。<br>
-      せわしなく動き続けた日常から離れて、京都の静けさの中にただ在ること。<br>
-      梅の香りを吸い込み、禅の庭に座り、地の食で身体を整える。<br>
-      この旅から戻るとき、あなたはきっと新しいステージへの覚悟を手にしている。
+      <span class="concept-line">転職という大きな決断を前に、2週間という贈り物のような休暇がある。</span><br>
+      <span class="concept-line">せわしなく動き続けた日常から離れて、京都の静けさの中にただ在ること。</span><br>
+      <span class="concept-line">梅の香りを吸い込み、禅の庭に座り、地の食で身体を整える。</span><br>
+      <span class="concept-line">この旅から戻るとき、あなたはきっと新しいステージへの覚悟を手にしている。</span>
     </p>
     <div class="concept-cards">
       <div class="concept-card"><div class="cc-icon">🌺</div><div class="cc-label">Season</div><div class="cc-val">梅・早春の京都</div></div>
@@ -856,7 +972,7 @@ footer .f-note{
           <div style="background:#f2f7fc;border:1px solid #c0d8ec;border-radius:8px;padding:14px 18px;font-size:.82rem;line-height:2;">
             <div style="display:grid;grid-template-columns:7em 1fr;gap:2px 0;color:#1a1510;">
               <span style="color:#4a6a88;font-weight:500;">チェックイン</span><span style="color:#1a1510;font-weight:700;">15:00〜</span>
-              <span style="color:#4a6a88;font-weight:500;">チェックアウト</span><span style="color:#1a1510;">〜11:00</span>
+              <span style="color:#4a6a88;font-weight:500;">チェックアウト</span><span style="color:#1a1510;">〜10:00</span>
               <span style="color:#4a6a88;font-weight:500;">予約番号</span><span style="font-family:monospace;letter-spacing:.08em;color:#2a4a70;font-weight:700;">RYa0mh2r0k</span>
               <span style="color:#4a6a88;font-weight:500;">お支払い</span><span style="color:#1a1510;">¥22,852（クーポン適用済）</span>
               <span style="color:#4a6a88;font-weight:500;">電話</span><span><a href="tel:075-361-1231" style="color:#2a4a7a;text-decoration:none;font-weight:500;">075-361-1231</a></span>
@@ -1464,7 +1580,7 @@ footer .f-note{
         <div class="tl-item">
           <div class="ti-time">09:30ごろ</div>
           <div class="ti-content ti-dot-walk">
-            <div class="ti-title">🏨 ハトヤ瑞鳳閣 チェックアウト（〜11:00）</div>
+            <div class="ti-title">🏨 ハトヤ瑞鳳閣 チェックアウト（〜10:00）</div>
             <div class="ti-detail">荷物をまとめてチェックアウト。荷物は京都駅のコインロッカーに預けるか、ヤマト運輸（駅内）で自宅へ宅配すると身軽に動ける。帰りの新幹線は気持ち次第で決めてOK。</div>
             <div class="tip-box">💡 大きな荷物は京都駅の「手ぶら観光」サービスで当日配送（¥1,500〜）。最終日も軽やかに。</div>
           </div>

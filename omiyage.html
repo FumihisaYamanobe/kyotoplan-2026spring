@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京都・神戸旅行プラン - お土産</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', 'Noto Sans JP', serif, sans-serif;
+            background: linear-gradient(135deg, #fef5e7 0%, #f9e5b8 100%);
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d4a574 0%, #c49063 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="35" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="60" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="70" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-repeat: repeat;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 12px 25px;
+            background: #2d5a3d;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #1f4028;
+        }
+
+        .back-button:hover {
+            background: #1f4028;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #d4a574;
+            margin: 50px 0 30px 0;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #d4a574;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .omiyage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .omiyage-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid #d4a574;
+            position: relative;
+        }
+
+        .omiyage-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .omiyage-card.limited::before {
+            content: '3月限定';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e74c3c;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .card-header {
+            padding: 25px;
+            background: linear-gradient(135deg, #fef5e7 0%, #f9e5b8 100%);
+            border-bottom: 2px solid #d4a574;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            color: #c49063;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.category {
+            background: #d4a574;
+            color: white;
+        }
+
+        .badge.location {
+            background: #e8b4a0;
+            color: white;
+        }
+
+        .badge.usage {
+            background: #c9a876;
+            color: white;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #c49063;
+            min-width: 100px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-label::after {
+            content: ':';
+            margin-right: 8px;
+        }
+
+        .info-value {
+            color: #555;
+            flex: 1;
+        }
+
+        .shelf-life {
+            background: #fff3cd;
+            border-left: 3px solid #f4c430;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 6px;
+            font-size: 0.95em;
+            color: #333;
+        }
+
+        .shelf-life strong {
+            color: #e8860b;
+        }
+
+        .shelf-life.long {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+
+        .shelf-life.long strong {
+            color: #155724;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .btn-primary {
+            background: #c49063;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #b17952;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #fef5e7;
+            color: #c49063;
+            border: 2px solid #d4a574;
+        }
+
+        .btn-secondary:hover {
+            background: #f9e5b8;
+        }
+
+        .section-intro {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 5px solid #d4a574;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-intro p {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: #d4a574;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            border-top: 2px solid #d4a574;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .omiyage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav style="background:#1a1510;border-bottom:1px solid rgba(184,147,90,.25);position:sticky;top:0;z-index:100;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:0;overflow-x:auto;">
+        <span style="font-size:.68rem;letter-spacing:.15em;color:rgba(255,255,255,.3);white-space:nowrap;padding:14px 16px 14px 0;border-right:1px solid rgba(255,255,255,.1);margin-right:8px;">ガイド</span>
+        <a href="index.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">📋 旅程プラン</a>
+        <a href="food.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🍽 食事候補</a>
+        <a href="leisure.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🌸 観光候補</a>
+        <a href="omiyage.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:#d4ae7a;white-space:nowrap;border-bottom:2px solid #d4ae7a;">🎁 お土産候補</a>
+      </div>
+    </nav>
+    <div class="container">
+        <a href="index.html" class="back-button">← メインページに戻る</a>
+
+        <header>
+            <h1>🎁 京都・神戸 お土産ガイド</h1>
+            <p>旅の思い出を詰めた、心ときめくお土産を見つけよう</p>
+        </header>
+
+        <h2 class="section-title">✨ 自分へのご褒美</h2>
+        <div class="section-intro">
+            <p>旅の途中で自分へのご褒美を。その時ここでしか出会えない、特別なお菓子や一品を。</p>
+        </div>
+
+        <div class="omiyage-grid">
+            <!-- 出町ふたば 豆餅 -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">出町ふたば</h3>
+                    <div class="badge-row">
+                        <span class="badge category">和菓子</span>
+                        <span class="badge location">京都駅・店舗</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">名代豆餅</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入場所</span>
+                        <span class="info-value">京都駅・出町エリア</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業時間</span>
+                        <span class="info-value">8:30〜17:30（火・第4水曜休）</span>
+                    </div>
+                    <div class="price-tag">¥150〜 / 個</div>
+                    <div class="shelf-life">
+                        <strong>賞味期限：当日中</strong>（要注意）
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">こだわり</span>
+                        <span class="info-value">北海道産豆と十勝小豆、羽二重もち米を使用</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/出町ふたば京都" class="btn btn-secondary">場所を見る</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 鍵善良房 葛切り -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">鍵善良房</h3>
+                    <div class="badge-row">
+                        <span class="badge category">和菓子</span>
+                        <span class="badge location">祇園</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">葛切り・葛菓子</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入場所</span>
+                        <span class="info-value">祇園四条（本店）</span>
+                    </div>
+                    <div class="price-tag">¥1,000〜 / セット</div>
+                    <div class="shelf-life long">
+                        <strong>賞味期限：数日〜1週間</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">創業</span>
+                        <span class="info-value">江戸時代</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">特徴</span>
+                        <span class="info-value">葛切りの老舗。上品な甘さと食感</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.kagizen.co.jp/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/鍵善良房祇園" class="btn btn-secondary">場所を見る</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 嘯月 上生菓子 -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">嘯月（しょうげつ）</h3>
+                    <div class="badge-row">
+                        <span class="badge category">和菓子</span>
+                        <span class="badge location">北大路</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">上生菓子（季節限定）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入方法</span>
+                        <span class="info-value">事前予約制</span>
+                    </div>
+                    <div class="price-tag">¥500〜 / 個</div>
+                    <div class="shelf-life">
+                        <strong>賞味期限：当日中</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業時間</span>
+                        <span class="info-value">9:00〜17:00（日祝休）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">創業</span>
+                        <span class="info-value">1916年</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/嘯月京都" class="btn btn-secondary">場所を見る</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 伊藤久右衛門 抹茶 -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">伊藤久右衛門</h3>
+                    <div class="badge-row">
+                        <span class="badge category">抹茶スイーツ</span>
+                        <span class="badge location">駅・複数</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">抹茶菓子・抹茶アイス</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入場所</span>
+                        <span class="info-value">京都駅・宇治本店など</span>
+                    </div>
+                    <div class="price-tag">¥800〜 / 個</div>
+                    <div class="shelf-life long">
+                        <strong>賞味期限：10日程度</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">用途</span>
+                        <span class="info-value">職場土産に◎</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.itohkyuemon.co.jp/" target="_blank" class="btn btn-primary">公式サイト</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">💼 職場・友人へのお土産</h2>
+        <div class="section-intro">
+            <p>職場の同僚や友人への感謝の気持ちを込めた、配りやすくて喜ばれるお土産。日持ちする品を厳選しました。</p>
+        </div>
+
+        <div class="omiyage-grid">
+            <!-- 長久堂 干菓子 -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">長久堂</h3>
+                    <div class="badge-row">
+                        <span class="badge category">干菓子</span>
+                        <span class="badge location">京都駅</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">上品な干菓子詰め合わせ</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入場所</span>
+                        <span class="info-value">京都駅</span>
+                    </div>
+                    <div class="price-tag">¥1,000〜 / セット</div>
+                    <div class="shelf-life long">
+                        <strong>賞味期限：2週間以上</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">配りやすさ</span>
+                        <span class="info-value">個装で配布可能</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/長久堂京都駅" class="btn btn-secondary">場所を見る</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 叶 匠壽庵 -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">叶 匠壽庵（あも）</h3>
+                    <div class="badge-row">
+                        <span class="badge category">和菓子</span>
+                        <span class="badge location">駅伊勢丹</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">あも（あんこ餅）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入場所</span>
+                        <span class="info-value">京都駅伊勢丹ほか</span>
+                    </div>
+                    <div class="price-tag">¥150〜 / 個</div>
+                    <div class="shelf-life long">
+                        <strong>賞味期限：1週間程度</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">用途</span>
+                        <span class="info-value">職場土産に最適</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/叶匠壽庵京都駅" class="btn btn-secondary">場所を見る</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 阿闍梨餅 -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">阿闍梨餅</h3>
+                    <div class="badge-row">
+                        <span class="badge category">和菓子</span>
+                        <span class="badge location">駅・店舗</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">阿闍梨餅</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入場所</span>
+                        <span class="info-value">京都駅・市内各所</span>
+                    </div>
+                    <div class="price-tag">¥180 / 個</div>
+                    <div class="shelf-life long">
+                        <strong>賞味期限：10日程度</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">特徴</span>
+                        <span class="info-value">京都人に愛される柔らかい饅頭</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="http://www.ajyarimochi.com/" target="_blank" class="btn btn-primary">公式サイト</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 有次 料理道具 -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">有次（ありつぐ）</h3>
+                    <div class="badge-row">
+                        <span class="badge category">雑貨</span>
+                        <span class="badge location">錦市場</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">包丁・調理器具・ふきん</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入場所</span>
+                        <span class="info-value">錦市場</span>
+                    </div>
+                    <div class="price-tag">¥2,000〜 / 品</div>
+                    <div class="shelf-life long">
+                        <strong>保存性：長期間</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">創業</span>
+                        <span class="info-value">1560年（480年以上の老舗）</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.aritsugu.jp/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/有次錦市場京都" class="btn btn-secondary">場所を見る</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 京都 祇園辻利 -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">京都 祇園辻利</h3>
+                    <div class="badge-row">
+                        <span class="badge category">抹茶</span>
+                        <span class="badge location">祇園・駅</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">抹茶菓子・抹茶ラテセット</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入場所</span>
+                        <span class="info-value">祇園・京都駅など</span>
+                    </div>
+                    <div class="price-tag">¥1,000〜 / セット</div>
+                    <div class="shelf-life long">
+                        <strong>賞味期限：1〜2週間</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">用途</span>
+                        <span class="info-value">職場土産に定番</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/祇園辻利京都" class="btn btn-secondary">場所を見る</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🏙️ 神戸みやげ</h2>
+        <div class="section-intro">
+            <p>神戸らしさを詰めた、異国情緒あふれるお土産。昔から愛されている定番品を。</p>
+        </div>
+
+        <div class="omiyage-grid">
+            <!-- 神戸風月堂 ゴーフル -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">神戸風月堂</h3>
+                    <div class="badge-row">
+                        <span class="badge category">焼菓子</span>
+                        <span class="badge location">神戸・ハーバーランド</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">ゴーフル</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入場所</span>
+                        <span class="info-value">神戸市内・ハーバーランド</span>
+                    </div>
+                    <div class="price-tag">¥600〜 / 箱</div>
+                    <div class="shelf-life long">
+                        <strong>賞味期限：2週間程度</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">特徴</span>
+                        <span class="info-value">神戸の定番みやげ。サクサク食感</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.kobe-fugetsudo.co.jp/" target="_blank" class="btn btn-primary">公式サイト</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🛫 駅で買える（帰り際に便利）</h2>
+        <div class="section-intro">
+            <p>帰る時間がない！でも土産を忘れていた...そんな時は駅で。すぐに購入できる定番品。</p>
+        </div>
+
+        <div class="omiyage-grid">
+            <!-- KYOTO TOWER SANDO -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">KYOTO TOWER SANDOの限定品</h3>
+                    <div class="badge-row">
+                        <span class="badge category">焼菓子</span>
+                        <span class="badge location">京都駅</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">京都駅前・直結</span>
+                    </div>
+                    <div class="price-tag">¥500〜 / 品</div>
+                    <div class="shelf-life long">
+                        <strong>賞味期限：1週間程度</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">特徴</span>
+                        <span class="info-value">限定商品多数。とにかく種類豊富</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業時間</span>
+                        <span class="info-value">駅営業時間に準じる</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/KYOTOSANDO京都駅" class="btn btn-secondary">場所を見る</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 七味家本舗 小分け -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">七味家本舗</h3>
+                    <div class="badge-row">
+                        <span class="badge category">調味料</span>
+                        <span class="badge location">清水坂・駅</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">商品</span>
+                        <span class="info-value">七味唐辛子・山椒粉</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">購入場所</span>
+                        <span class="info-value">清水坂・京都駅</span>
+                    </div>
+                    <div class="price-tag">¥500〜 / 小袋</div>
+                    <div class="shelf-life long">
+                        <strong>賞味期限：1年以上</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">創業</span>
+                        <span class="info-value">江戸時代（明暦年間）</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.shichimiya.co.jp/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/七味家本舗京都" class="btn btn-secondary">場所を見る</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 京都駅伊勢丹食品 -->
+            <div class="omiyage-card">
+                <div class="card-header">
+                    <h3 class="card-title">京都駅伊勢丹 食品売場</h3>
+                    <div class="badge-row">
+                        <span class="badge category">複合</span>
+                        <span class="badge location">京都駅</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">JR京都駅 ビル内</span>
+                    </div>
+                    <div class="price-tag">¥400〜 / 品</div>
+                    <div class="shelf-life long">
+                        <strong>賞味期限：品により異なる</strong>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">特徴</span>
+                        <span class="info-value">京都の有名菓子を一堂に集約</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業時間</span>
+                        <span class="info-value">8:00〜21:00</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.mistore.jp/store/kyoto/" target="_blank" class="btn btn-primary">公式サイト</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">💡 お土産選びのコツ</h2>
+        <div class="section-intro">
+            <p>
+                <strong>生もの（当日中）：</strong>出町ふたば、嘯月など。到着後すぐに食べるか、贈り手に「当日中に食べてください」と伝えましょう。<br><br>
+                <strong>日持ちする品：</strong>干菓子、調味料、焼菓子。3日以上日持ちするものは、配送や持ち運びが安心。<br><br>
+                <strong>配りやすさ：</strong>小分けになっているか、個装されているかを確認。特に職場では個装が便利です。<br><br>
+                <strong>3月限定品：</strong>季節限定の上生菓子は、この時期ならではの特別感。予約が必要な場合もあるので事前確認を。
+            </p>
+        </div>
+
+        <footer>
+            <p>京都・神戸旅行プランナー | 2026年3月版</p>
+            <p>最新情報・在庫については各店舗にお問い合わせください</p>
+        </footer>
+    </div>
+
+    <script>
+        // ページ内スクロール効果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

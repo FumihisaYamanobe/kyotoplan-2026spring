@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京都・神戸旅行プラン - 余暇スポット</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', 'Noto Sans JP', serif, sans-serif;
+            background: linear-gradient(135deg, #f5f1ed 0%, #e8dcc8 100%);
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2d5a3d 0%, #4a7c5e 100%);
+            color: #f5f1ed;
+            padding: 40px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,30 Q40,20 60,30 T100,30" stroke="rgba(245,241,237,0.1)" fill="none" stroke-width="0.5"/><path d="M20,50 Q40,40 60,50 T100,50" stroke="rgba(245,241,237,0.1)" fill="none" stroke-width="0.5"/><path d="M20,70 Q40,60 60,70 T100,70" stroke="rgba(245,241,237,0.1)" fill="none" stroke-width="0.5"/></svg>');
+            background-repeat: repeat;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 12px 25px;
+            background: #d4a574;
+            color: #2d5a3d;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #c49063;
+        }
+
+        .back-button:hover {
+            background: #c49063;
+            color: #f5f1ed;
+            transform: translateY(-2px);
+        }
+
+        .controls {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: bold;
+            color: #2d5a3d;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            border: 2px solid #d4a574;
+            background: white;
+            color: #2d5a3d;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #d4a574;
+            color: white;
+            border-color: #c49063;
+        }
+
+        .spots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .spot-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid #d4a574;
+        }
+
+        .spot-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .spot-header {
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f1ed 0%, #e8dcc8 100%);
+            border-bottom: 2px solid #d4a574;
+        }
+
+        .spot-title {
+            font-size: 1.5em;
+            color: #2d5a3d;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.area {
+            background: #2d5a3d;
+            color: white;
+        }
+
+        .badge.category {
+            background: #d4a574;
+            color: white;
+        }
+
+        .spot-content {
+            padding: 25px;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #2d5a3d;
+            min-width: 110px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-label::after {
+            content: ':';
+            margin-right: 8px;
+        }
+
+        .info-value {
+            color: #555;
+            flex: 1;
+        }
+
+        .march-highlight {
+            background: #fef3cd;
+            border-left: 3px solid #f4c430;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 6px;
+            font-size: 0.95em;
+            color: #333;
+        }
+
+        .march-highlight strong {
+            color: #e74c3c;
+        }
+
+        .rating {
+            color: #f4c430;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .btn-primary {
+            background: #2d5a3d;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1f4028;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #d4a574;
+            color: #2d5a3d;
+        }
+
+        .btn-secondary:hover {
+            background: #c49063;
+            color: white;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #2d5a3d;
+            margin: 50px 0 30px 0;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #d4a574;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 1.1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 2px solid #d4a574;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .spots-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .filter-options {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                padding: 6px 14px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav style="background:#1a1510;border-bottom:1px solid rgba(184,147,90,.25);position:sticky;top:0;z-index:100;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:0;overflow-x:auto;">
+        <span style="font-size:.68rem;letter-spacing:.15em;color:rgba(255,255,255,.3);white-space:nowrap;padding:14px 16px 14px 0;border-right:1px solid rgba(255,255,255,.1);margin-right:8px;">ガイド</span>
+        <a href="index.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">📋 旅程プラン</a>
+        <a href="food.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🍽 食事候補</a>
+        <a href="leisure.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:#d4ae7a;white-space:nowrap;border-bottom:2px solid #d4ae7a;">🌸 観光候補</a>
+        <a href="omiyage.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🎁 お土産候補</a>
+      </div>
+    </nav>
+    <div class="container">
+        <a href="index.html" class="back-button">← メインページに戻る</a>
+
+        <header>
+            <h1>🌸 京都・神戸 余暇スポット</h1>
+            <p>3月の早春を彩る、心ときめく観光地とカフェをご紹介</p>
+        </header>
+
+        <div class="controls">
+            <div class="filter-group">
+                <label>エリアで絞り込み</label>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">すべて</button>
+                    <button class="filter-btn" data-filter="kyoto-central">京都市内</button>
+                    <button class="filter-btn" data-filter="arashiyama">嵐山</button>
+                    <button class="filter-btn" data-filter="fushimi">伏見</button>
+                    <button class="filter-btn" data-filter="kobe">神戸</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label>カテゴリで絞り込み</label>
+                <div class="filter-options">
+                    <button class="filter-btn" data-category="all">すべて</button>
+                    <button class="filter-btn" data-category="shrine-temple">神社仏閣</button>
+                    <button class="filter-btn" data-category="garden">庭園</button>
+                    <button class="filter-btn" data-category="scenery">街並み</button>
+                    <button class="filter-btn" data-category="experience">体験</button>
+                    <button class="filter-btn" data-category="nature">自然</button>
+                    <button class="filter-btn" data-category="cafe">カフェ</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label>入場料で絞り込み</label>
+                <div class="filter-options">
+                    <button class="filter-btn" data-price="all">すべて</button>
+                    <button class="filter-btn" data-price="free">無料</button>
+                    <button class="filter-btn" data-price="paid">有料</button>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">✨ 京都エリア</h2>
+        <div class="spots-grid" id="kyoto-spots">
+            <!-- 祇園白川・巽橋 -->
+            <div class="spot-card" data-filter="kyoto-central" data-category="scenery" data-price="free">
+                <div class="spot-header">
+                    <h3 class="spot-title">祇園白川・巽橋</h3>
+                    <div class="badge-row">
+                        <span class="badge area">京都市内</span>
+                        <span class="badge category">街並み</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">東山区・白川南通</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">入場</span>
+                        <span class="info-value">無料・24時間</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">所要時間</span>
+                        <span class="info-value">30〜45分</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">京阪祇園四条駅より徒歩5分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>石畳の道沿いの柳の新芽が芽吹き、早咲き桜も見られます。茶屋建築とのコントラストが美しい季節です。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/祇園白川巽橋" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 高台寺 -->
+            <div class="spot-card" data-filter="kyoto-central" data-category="shrine-temple" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">高台寺</h3>
+                    <div class="badge-row">
+                        <span class="badge area">京都市内</span>
+                        <span class="badge category">神社仏閣</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">東山区高台寺下河原町</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">拝観料</span>
+                        <span class="info-value">¥600</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業</span>
+                        <span class="info-value">9:00〜17:00</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">京阪祇園四条駅より徒歩10分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>豊臣秀吉の妻ゆかりの寺院。庭園と茶室が静寂に包まれた早春の雰囲気を演出します。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★☆</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/高台寺京都" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 二年坂・三年坂 -->
+            <div class="spot-card" data-filter="kyoto-central" data-category="scenery" data-price="free">
+                <div class="spot-header">
+                    <h3 class="spot-title">二年坂・三年坂</h3>
+                    <div class="badge-row">
+                        <span class="badge area">京都市内</span>
+                        <span class="badge category">街並み</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">東山区</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">入場</span>
+                        <span class="info-value">無料</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">所要時間</span>
+                        <span class="info-value">30分程度</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">京阪祇園四条駅より徒歩10分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>大正時代の石畳道。甘味処や京雑貨の店が並び、タイムスリップしたような体験ができます。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/二年坂三年坂京都" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 清水寺 -->
+            <div class="spot-card" data-filter="kyoto-central" data-category="shrine-temple" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">清水寺</h3>
+                    <div class="badge-row">
+                        <span class="badge area">京都市内</span>
+                        <span class="badge category">神社仏閣</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">東山区清水</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">拝観料</span>
+                        <span class="info-value">¥400</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業</span>
+                        <span class="info-value">6:00〜18:00</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">京阪祇園四条駅より徒歩15分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>京都の象徴。舞台からの眺望は季節を問わず素晴らしく、3月は清々しい空気に包まれています。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.kiyomizudera.or.jp/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/清水寺京都" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 城南宮 -->
+            <div class="spot-card" data-filter="fushimi" data-category="shrine-temple" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">城南宮 ★3月最重要</h3>
+                    <div class="badge-row">
+                        <span class="badge area">伏見</span>
+                        <span class="badge category">神社仏閣</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">伏見区中島鳥羽離宮町7</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">神苑拝観</span>
+                        <span class="info-value">¥800（梅椿祭期間¥1,000）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業</span>
+                        <span class="info-value">9:00〜16:30</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">地下鉄烏丸線竹田駅より徒歩15分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>しだれ梅と椿まつり（2/18〜3/22）。優雅に垂れ下がる紅白のしだれ梅は京都随一の美しさです！
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.jonangu.com/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/城南宮京都" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 北野天満宮 梅苑 -->
+            <div class="spot-card" data-filter="kyoto-central" data-category="shrine-temple" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">北野天満宮 梅苑</h3>
+                    <div class="badge-row">
+                        <span class="badge area">京都市内</span>
+                        <span class="badge category">神社仏閣</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">上京区馬喰町</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">梅苑料金</span>
+                        <span class="info-value">大人¥3,000（当日）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業</span>
+                        <span class="info-value">9:00〜20:30</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">市営バス「北野天満宮前」下車</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>約50品種1,500本の梅が咲き誇ります。「光と花の庭」で夜間特別拝観も可能。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★☆</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://kitanotenmangu.or.jp/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/北野天満宮京都" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 竹林の小径 -->
+            <div class="spot-card" data-filter="arashiyama" data-category="nature" data-price="free">
+                <div class="spot-header">
+                    <h3 class="spot-title">竹林の小径</h3>
+                    <div class="badge-row">
+                        <span class="badge area">嵐山</span>
+                        <span class="badge category">自然</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">右京区嵯峨野</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">入場</span>
+                        <span class="info-value">無料・24時間</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">所要時間</span>
+                        <span class="info-value">20〜30分</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">嵐電嵐山駅より徒歩5分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>嵐山の象徴的スポット。混雑を避けるなら15〜16時台の訪問がおすすめ。早朝散歩も素敵です。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/竹林の小径嵐山" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 天龍寺 -->
+            <div class="spot-card" data-filter="arashiyama" data-category="shrine-temple" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">天龍寺 曹源池庭園</h3>
+                    <div class="badge-row">
+                        <span class="badge area">嵐山</span>
+                        <span class="badge category">庭園</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">右京区嵯峨天龍寺芒ノ馬場町68</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">拝観料</span>
+                        <span class="info-value">庭園¥500 / 諸堂込¥800</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業</span>
+                        <span class="info-value">8:30〜17:00</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">嵐電嵐山駅より徒歩2分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>世界遺産。夢窓疎石作庭の庭園が嵐山を借景に。早春の澄んだ空気が最高です。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.tenryuji.com/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/天龍寺京都" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 嵐山公園 -->
+            <div class="spot-card" data-filter="arashiyama" data-category="nature" data-price="free">
+                <div class="spot-header">
+                    <h3 class="spot-title">嵐山公園</h3>
+                    <div class="badge-row">
+                        <span class="badge area">嵐山</span>
+                        <span class="badge category">自然</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">右京区嵯峨亀ノ尾町</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">入場</span>
+                        <span class="info-value">無料</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">所要時間</span>
+                        <span class="info-value">30分程度</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">嵐電嵐山駅より徒歩10分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>桂川の眺望が素晴らしい。春の早咲き花が咲き始め、自然の息吹が感じられます。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★☆</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/嵐山公園" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 月桂冠大倉記念館 -->
+            <div class="spot-card" data-filter="fushimi" data-category="experience" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">月桂冠大倉記念館</h3>
+                    <div class="badge-row">
+                        <span class="badge area">伏見</span>
+                        <span class="badge category">体験</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">伏見区南浜町247</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">料金</span>
+                        <span class="info-value">¥600（きき酒セット付）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業</span>
+                        <span class="info-value">9:30〜16:30（月・火曜休）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">近鉄丹波橋駅より徒歩5分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>江戸時代の酒蔵で伏見の酒造文化を学べます。きき酒体験で地元の味を堪能できます。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★☆</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/月桂冠大倉記念館京都" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 十石舟 -->
+            <div class="spot-card" data-filter="fushimi" data-category="experience" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">十石舟・三十石船</h3>
+                    <div class="badge-row">
+                        <span class="badge area">伏見</span>
+                        <span class="badge category">体験</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">伏見区南浜町</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">料金</span>
+                        <span class="info-value">¥1,500程度</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">予約</span>
+                        <span class="info-value">要予約</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">近鉄丹波橋駅より徒歩5分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>濠川から眺める伏見の酒蔵風景。船上で伏見の歴史と文化を感じられます。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★☆</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/伏見十石舟" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 京都府立植物園 -->
+            <div class="spot-card" data-filter="kyoto-central" data-category="nature" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">京都府立植物園</h3>
+                    <div class="badge-row">
+                        <span class="badge area">京都市内</span>
+                        <span class="badge category">自然</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">左京区下鴨半木町</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">入園料</span>
+                        <span class="info-value">¥500（温室¥200別）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業</span>
+                        <span class="info-value">9:00〜17:00</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">市営バス「北山駅」より徒歩5分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>梅林が見頃。北山通りのカフェエリアも近く、散歩がてら立ち寄れます。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/京都府立植物園" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 両足院 座禅体験 -->
+            <div class="spot-card" data-filter="kyoto-central" data-category="experience" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">両足院 座禅体験</h3>
+                    <div class="badge-row">
+                        <span class="badge area">京都市内</span>
+                        <span class="badge category">体験</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">東山区大和大路通四条下ル</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">料金</span>
+                        <span class="info-value">¥3,000程度</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">所要時間</span>
+                        <span class="info-value">45〜60分</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">予約</span>
+                        <span class="info-value">要予約</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">京阪祇園四条駅より徒歩5分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>臨済宗禅寺で心を整える体験。庭園散策と座禅で、自分とのひとときを。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://ryosokuin.com/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/両足院京都" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 御金神社 -->
+            <div class="spot-card" data-filter="kyoto-central" data-category="shrine-temple" data-price="free">
+                <div class="spot-header">
+                    <h3 class="spot-title">御金神社</h3>
+                    <div class="badge-row">
+                        <span class="badge area">京都市内</span>
+                        <span class="badge category">神社仏閣</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">中京区押西洞院町614</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">入場</span>
+                        <span class="info-value">無料</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">社務所</span>
+                        <span class="info-value">10:00〜16:00</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">地下鉄烏丸線「烏丸御池駅」より徒歩5分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>金色の鳥居が印象的。金運・仕事運の神社として知られ、静寂の中でお参りできます。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/御金神社京都" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 哲学の道 -->
+            <div class="spot-card" data-filter="kyoto-central" data-category="scenery" data-price="free">
+                <div class="spot-header">
+                    <h3 class="spot-title">哲学の道</h3>
+                    <div class="badge-row">
+                        <span class="badge area">京都市内</span>
+                        <span class="badge category">街並み</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">左京区（銀閣寺〜南禅寺）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">入場</span>
+                        <span class="info-value">無料</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">所要時間</span>
+                        <span class="info-value">40〜50分</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">市営バス「銀閣寺道」または「南禅寺」</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>疎水沿いの遊歩道。春の新緑と水の音に包まれた散歩は、心を静寂へ導きます。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/哲学の道京都" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🏛️ 神戸エリア</h2>
+        <div class="spots-grid" id="kobe-spots">
+            <!-- うろこの家 -->
+            <div class="spot-card" data-filter="kobe" data-category="scenery" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">うろこの家</h3>
+                    <div class="badge-row">
+                        <span class="badge area">神戸</span>
+                        <span class="badge category">街並み</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">北区北野町2-20-4</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">料金</span>
+                        <span class="info-value">¥1,050</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業</span>
+                        <span class="info-value">9:00〜18:00</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">JR・阪急「三宮駅」より徒歩10分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>異人館の中でも独特の魅力を持つ館。瓦葺きの屋根が特徴で、異国情緒が満載です。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★☆</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.kobeijinkan.com/ijinkan_list/urokono/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/うろこの家神戸" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 風見鶏の館 -->
+            <div class="spot-card" data-filter="kobe" data-category="scenery" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">風見鶏の館</h3>
+                    <div class="badge-row">
+                        <span class="badge area">神戸</span>
+                        <span class="badge category">街並み</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">北野町3-13-3</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">料金</span>
+                        <span class="info-value">¥500</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業</span>
+                        <span class="info-value">9:00〜18:00（火曜休）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">JR・阪急「三宮駅」より徒歩10分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>国指定重要文化財。ドイツ人貿易商の旧邸。風見鶏が目印の優雅な異人館です。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★☆</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://kobe-kazamidori.com/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/風見鶏の館神戸" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 萌黄の館 -->
+            <div class="spot-card" data-filter="kobe" data-category="scenery" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">萌黄の館</h3>
+                    <div class="badge-row">
+                        <span class="badge area">神戸</span>
+                        <span class="badge category">街並み</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">北野町3-10-11</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">料金</span>
+                        <span class="info-value">¥400</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">営業</span>
+                        <span class="info-value">9:00〜18:00</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">JR・阪急「三宮駅」より徒歩10分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>淡いグリーンの外観が優美な異人館。かつての領事館として歴史を刻んでいます。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★☆</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/萌黄の館神戸" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 神戸旧居留地 -->
+            <div class="spot-card" data-filter="kobe" data-category="scenery" data-price="free">
+                <div class="spot-header">
+                    <h3 class="spot-title">神戸旧居留地</h3>
+                    <div class="badge-row">
+                        <span class="badge area">神戸</span>
+                        <span class="badge category">街並み</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">中央区明石町エリア</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">入場</span>
+                        <span class="info-value">無料（外観見学）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">所要時間</span>
+                        <span class="info-value">60〜90分</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">JR・阪急「三宮駅」より徒歩5分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>1868年開港とともに整備された居留地。明治期の西洋建築群が歴史を物語ります。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.kobe-kyoryuchi.com/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/神戸旧居留地" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- メリケンパーク -->
+            <div class="spot-card" data-filter="kobe" data-category="scenery" data-price="free">
+                <div class="spot-header">
+                    <h3 class="spot-title">メリケンパーク</h3>
+                    <div class="badge-row">
+                        <span class="badge area">神戸</span>
+                        <span class="badge category">街並み</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">中央区波止場町</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">入場</span>
+                        <span class="info-value">無料</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">所要時間</span>
+                        <span class="info-value">30〜45分</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">地下鉄「三宮・花時計駅」より徒歩10分</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>be kobe モニュメント、神戸ポートタワーが象徴的。海の風を感じながらのんびり歩けます。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★★</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/メリケンパーク神戸" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ハーバーランド -->
+            <div class="spot-card" data-filter="kobe" data-category="scenery" data-price="free">
+                <div class="spot-header">
+                    <h3 class="spot-title">ハーバーランド</h3>
+                    <div class="badge-row">
+                        <span class="badge area">神戸</span>
+                        <span class="badge category">街並み</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">中央区東川崎町</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">入場</span>
+                        <span class="info-value">無料（施設内は別）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">所要時間</span>
+                        <span class="info-value">自由</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最寄駅</span>
+                        <span class="info-value">JR・ポートライナー「ハーバーランド駅」</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月の見どころ：</strong>umie モール、夜景スポットとして人気。ショッピング、食事、景観を満喫できます。
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">一人旅★</span>
+                        <span class="info-value rating">★★★★☆</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.google.com/maps/search/ハーバーランド神戸" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">☕ スイーツ・カフェ</h2>
+        <div class="spots-grid" id="cafe-spots">
+            <!-- % Arabica 嵐山 -->
+            <div class="spot-card" data-filter="arashiyama" data-category="cafe" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">% Arabica 嵐山</h3>
+                    <div class="badge-row">
+                        <span class="badge area">嵐山</span>
+                        <span class="badge category">カフェ</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">エリア</span>
+                        <span class="info-value">嵐山</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">料金</span>
+                        <span class="info-value">ラテ¥800〜</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">特徴</span>
+                        <span class="info-value">スペシャルティコーヒー専門</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月のおすすめ：</strong>竹林散歩の帰りに立ち寄るのに最適。手軽に本格コーヒーが楽しめます。
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://arabica.coffee/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/Arabica嵐山" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 鶴屋吉信 嵐山店 -->
+            <div class="spot-card" data-filter="arashiyama" data-category="cafe" data-price="paid">
+                <div class="spot-header">
+                    <h3 class="spot-title">鶴屋吉信 嵐山店</h3>
+                    <div class="badge-row">
+                        <span class="badge area">嵐山</span>
+                        <span class="badge category">カフェ</span>
+                    </div>
+                </div>
+                <div class="spot-content">
+                    <div class="info-row">
+                        <span class="info-label">エリア</span>
+                        <span class="info-value">嵐山</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">特徴</span>
+                        <span class="info-value">京都の老舗和菓子店</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">おすすめ</span>
+                        <span class="info-value">抹茶と上生菓子のセット</span>
+                    </div>
+                    <div class="march-highlight">
+                        <strong>3月のおすすめ：</strong>季節限定の上生菓子で春の訪れを感じましょう。和の美学を堪能できます。
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://www.tsuruyayoshinobu.jp/" target="_blank" class="btn btn-primary">公式サイト</a>
+                        <a href="https://maps.google.com/maps/search/鶴屋吉信嵐山" class="btn btn-secondary">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>京都・神戸旅行プランナー | 2026年3月版</p>
+            <p>最新情報は各施設の公式サイトでご確認ください</p>
+        </footer>
+    </div>
+
+    <script>
+        // フィルタリング機能
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const spotCards = document.querySelectorAll('.spot-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 同じグループ内のボタンをリセット
+                const filterGroup = btn.parentElement;
+                const groupBtns = filterGroup.querySelectorAll('.filter-btn');
+                groupBtns.forEach(b => {
+                    if (b !== btn && !b.dataset.filter && !b.dataset.category && !b.dataset.price) {
+                        b.classList.remove('active');
+                    }
+                });
+
+                btn.classList.toggle('active');
+                updateDisplay();
+            });
+        });
+
+        function updateDisplay() {
+            const activeFilters = {};
+
+            document.querySelectorAll('.filter-group').forEach(group => {
+                const activeBtn = group.querySelector('.filter-btn.active');
+                if (activeBtn) {
+                    if (activeBtn.dataset.filter) activeFilters.filter = activeBtn.dataset.filter;
+                    if (activeBtn.dataset.category) activeFilters.category = activeBtn.dataset.category;
+                    if (activeBtn.dataset.price) activeFilters.price = activeBtn.dataset.price;
+                }
+            });
+
+            spotCards.forEach(card => {
+                let show = true;
+
+                if (activeFilters.filter && activeFilters.filter !== 'all') {
+                    show = show && card.dataset.filter === activeFilters.filter;
+                }
+                if (activeFilters.category && activeFilters.category !== 'all') {
+                    show = show && card.dataset.category === activeFilters.category;
+                }
+                if (activeFilters.price && activeFilters.price !== 'all') {
+                    show = show && card.dataset.price === activeFilters.price;
+                }
+
+                card.style.display = show ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

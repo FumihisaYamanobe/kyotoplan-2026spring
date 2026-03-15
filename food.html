@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京都旅行プラン - 食事処ガイド</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #8B3A3A;
+            --accent-gold: #D4AF37;
+            --background: #F5F1E8;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-color: #D4C5B9;
+            --card-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Yu Gothic', '游ゴシック', sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #A04D4D 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .back-link a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link a:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* コントロール */
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 2rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-group select {
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--card-bg);
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-group select:hover,
+        .filter-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        /* タブボタン */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 1.5rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            color: var(--text-dark);
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* コンテナ */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .day-section {
+            margin-bottom: 3rem;
+            display: none;
+        }
+
+        .day-section.active {
+            display: block;
+        }
+
+        .day-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .day-icon {
+            font-size: 2rem;
+        }
+
+        /* カードグリッド */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* カード */
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(139, 58, 58, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #A04D4D 100%);
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .badge.meal {
+            background-color: var(--accent-gold);
+            color: var(--primary-color);
+            border: none;
+        }
+
+        .badge.michelin {
+            background-color: #FFD700;
+            color: var(--primary-color);
+            font-weight: 700;
+            border: none;
+        }
+
+        .badge.green {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary-color);
+            min-width: 80px;
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            color: var(--text-light);
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .menu-highlight {
+            background: #FFF8DC;
+            border-left: 3px solid var(--accent-gold);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 0.75rem;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #6B2A2A;
+            border-color: #6B2A2A;
+        }
+
+        /* 説明文 */
+        .recommendation {
+            background: #F0F0F0;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin: 0.5rem 0;
+        }
+
+        .recommendation strong {
+            color: var(--primary-color);
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .controls { grid-template-columns: 1fr; }
+            .tabs { padding: 0.75rem 0.5rem; gap: 0.4rem; }
+            .tab-btn { padding: 0.55rem 0.9rem; font-size: 0.82rem; }
+            .day-title { font-size: 1.4rem; margin-bottom: 1.25rem; gap: 0.6rem; }
+            .day-icon { font-size: 1.6rem; }
+            .card-title { font-size: 1.1rem; }
+            .buttons { flex-direction: column; }
+            .btn { width: 100%; }
+            .container { padding: 1.25rem 0.85rem; }
+        }
+
+        @media (max-width: 480px) {
+            .header { padding: 1.5rem 1rem; }
+            .header h1 { font-size: 1.4rem; letter-spacing: .05em; }
+            .header p { font-size: 0.82rem; }
+            .tabs { padding: 0.5rem 0.4rem; gap: 0.3rem; }
+            .tab-btn { padding: 0.45rem 0.7rem; font-size: 0.78rem; }
+            .day-title { font-size: 1.15rem; padding-bottom: 0.75rem; margin-bottom: 1rem; }
+            .day-icon { font-size: 1.3rem; }
+            .card-title { font-size: 1rem; }
+            .card-subtitle { font-size: 0.78rem; }
+            .badge { font-size: 0.65rem; padding: 0.15rem 0.5rem; }
+            .info-label { font-size: 0.7rem; }
+            .info-value { font-size: 0.82rem; }
+            .menu-highlight { font-size: 0.82rem; padding: 0.6rem; }
+            .recommendation { font-size: 0.78rem; padding: 0.6rem; }
+            .cards-grid { gap: 1.25rem; }
+            .container { padding: 1rem 0.75rem; }
+        }
+
+        /* 空状態 */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-light);
+        }
+
+        .empty-state p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav style="background:#1a1510;border-bottom:1px solid rgba(184,147,90,.25);position:sticky;top:0;z-index:100;">
+      <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:0;overflow-x:auto;">
+        <span style="font-size:.68rem;letter-spacing:.15em;color:rgba(255,255,255,.3);white-space:nowrap;padding:14px 16px 14px 0;border-right:1px solid rgba(255,255,255,.1);margin-right:8px;">ガイド</span>
+        <a href="index.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">📋 旅程プラン</a>
+        <a href="food.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:#d4ae7a;white-space:nowrap;border-bottom:2px solid #d4ae7a;">🍽 食事候補</a>
+        <a href="leisure.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🌸 観光候補</a>
+        <a href="omiyage.html" style="text-decoration:none;padding:14px 14px;font-size:.75rem;letter-spacing:.08em;color:rgba(255,255,255,.55);white-space:nowrap;">🎁 お土産候補</a>
+      </div>
+    </nav>
+    <div class="header">
+        <div class="back-link">
+            <a href="index.html">← メインページに戻る</a>
+        </div>
+        <h1>🍽️ 食事処ガイド</h1>
+        <p>京都・神戸・大阪の厳選飲食店</p>
+    </div>
+
+    <div class="controls">
+        <div class="filter-group">
+            <label for="date-filter">日付で絞る</label>
+            <select id="date-filter">
+                <option value="">すべての日付</option>
+                <option value="3/17">3月17日（木）</option>
+                <option value="3/18">3月18日（金）</option>
+                <option value="3/19">3月19日（土）</option>
+                <option value="3/20">3月20日（日）</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="category-filter">カテゴリで絞る</label>
+            <select id="category-filter">
+                <option value="">すべてのカテゴリ</option>
+                <option value="朝食">朝食</option>
+                <option value="ランチ">ランチ</option>
+                <option value="夕食">夕食</option>
+                <option value="晩酌">晩酌・小料理</option>
+                <option value="カフェ">カフェ・スイーツ</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="area-filter">エリアで絞る</label>
+            <select id="area-filter">
+                <option value="">すべてのエリア</option>
+                <option value="京都">京都</option>
+                <option value="神戸">神戸</option>
+                <option value="大阪">大阪</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" data-date="3/17">3月17日</button>
+        <button class="tab-btn" data-date="3/18">3月18日</button>
+        <button class="tab-btn" data-date="3/19">3月19日</button>
+        <button class="tab-btn" data-date="3/20">3月20日</button>
+    </div>
+
+    <div class="container">
+        <!-- 3月17日 -->
+        <div class="day-section active" data-date="3/17">
+            <div class="day-title"><span class="day-icon">🌅</span>3月17日（火）京都到着 → 岡崎・南禅寺・清水周辺観光</div>
+
+            <div class="cards-grid">
+                <!-- 1. 岡崎エリア カフェランチ -->
+                <div class="card" data-category="ランチ" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">ラ・ボンバンス 祇園</div>
+                        <div class="card-subtitle">らぼんばんす ぎおん</div>
+                        <div class="badge-container">
+                            <span class="badge meal">ランチ</span>
+                            <span class="badge">創作日本料理</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">東山区（清水寺周辺エリア）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">ランチ ¥3,000～5,000</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">👥</span>
+                            <div>
+                                <div class="info-label">予約</div>
+                                <div class="info-value">推奨（一人OK）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>おすすめ：</strong>季節の食材を使った創作和食ランチ<br/>祇園・清水周辺を歩いた後に
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 清水寺・産寧坂周辺の散策後にゆっくりランチを楽しめる。清水周辺は食事処多数なので当日の気分で選んでもOK
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/kyoto/A2601/A260301/" target="_blank" class="btn btn-primary">食べログで探す</a>
+                            <a href="https://restaurant.ikyu.com/area/kyoto/009/higashiyama/" target="_blank" class="btn">一休で探す</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 南禅寺エリア カフェ -->
+                <div class="card" data-category="ランチ" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">京料理 六盛</div>
+                        <div class="card-subtitle">きょうりょうり ろくせい</div>
+                        <div class="badge-container">
+                            <span class="badge meal">ランチ</span>
+                            <span class="badge">京懐石</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">岡崎・平安神宮近く（左京区）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">松花堂 ¥5,400～</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">11:00～19:00</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>手桶弁当・松花堂弁当</strong><br/>創業120年以上の老舗
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 岡崎神社・平安神宮参拝後のランチに最適。老舗の松花堂弁当でゆっくり京都の味を楽しむ
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://restaurant.ikyu.com/101298" target="_blank" class="btn btn-primary">一休で予約</a>
+                            <a href="https://tabelog.com/kyoto/A2601/A260402/26000036/" target="_blank" class="btn">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 二年坂でお茶 -->
+                <div class="card" data-category="ランチ" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">産寧坂 お茶タイム</div>
+                        <div class="card-subtitle">さんねいざか</div>
+                        <div class="badge-container">
+                            <span class="badge meal">おやつ</span>
+                            <span class="badge">甘味・抹茶</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">東山区清水（清水寺〜二年坂・三年坂）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥700～1,500</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">各店舗 10:00〜17:00ごろ</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>おすすめ：</strong>辻利の抹茶パフェ、七味屋のスパイス試食、和菓子店の一服セット
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 清水坂〜二年坂〜三年坂の石畳を歩きながら食べ歩き＆お茶休憩。17:00頃のチェックイン前に最適
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/kyoto/A2601/A260301/" target="_blank" class="btn btn-primary">食べログで探す</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-title"><span class="day-icon">🌆</span>3月17日 夕食（京都在住の友人とお任せ）</div>
+
+            <div class="cards-grid">
+                <div class="card" data-category="夕食" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">友人お任せ（京都在住）</div>
+                        <div class="card-subtitle">18:30 京都タワー店スタバで待ち合わせ</div>
+                        <div class="badge-container">
+                            <span class="badge meal">夕食</span>
+                            <span class="badge">お任せ</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">待ち合わせ</div>
+                                <div class="info-value">スターバックス 京都タワー店（京都タワーB1F）</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">待ち合わせ時間</div>
+                                <div class="info-value">18:30</div>
+                            </div>
+                        </div>
+                        <div class="menu-highlight">
+                            <strong>京都に住む友人が店を選んでくれる！</strong><br/>地元民だからこそ知る隠れた名店かも
+                        </div>
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 自分での予約は不要。地元に詳しい友人に全部お任せ。花伝抄のチェックインを済ませてから京都駅タワーへ向かおう
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 参考：夕食候補（友人がこういう店を選ぶかも） -->
+                <div class="card" data-category="夕食" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">京料理 木乃婦</div>
+                        <div class="card-subtitle">きょうりょうり きのぶ（参考）</div>
+                        <div class="badge-container">
+                            <span class="badge meal">夕食</span>
+                            <span class="badge michelin">★ ミシュラン1つ星</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">中京区・四条烏丸近く</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">夜 ¥15,000～</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">📞</span>
+                            <div>
+                                <div class="info-label">電話</div>
+                                <div class="info-value">075-221-8171</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">👥</span>
+                            <div>
+                                <div class="info-label">予約</div>
+                                <div class="info-value">必須（一休.comで予約可）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>京懐石の最高峰</strong><br/>京都の四季を表現した料理
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> ★ミシュラン1つ星。もし友人に店を事前に伝えるなら、こういったお店が候補になるかも（参考情報）
+                        </div>
+
+                        <div class="buttons">
+                            <a href="http://www.kinobu.co.jp/" target="_blank" class="btn btn-primary">公式サイト</a>
+                            <a href="https://restaurant.ikyu.com/105713/" target="_blank" class="btn">一休で予約</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="夕食" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">祇をん 佐藤</div>
+                        <div class="card-subtitle">ぎおん さとう（参考）</div>
+                        <div class="badge-container">
+                            <span class="badge meal">夕食</span>
+                            <span class="badge">割烹寿司</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">祇園新橋</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥12,000～</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">夜のみ（要確認）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>割烹料理→寿司でしめるコース</strong><br/>築150年の京町家での食事
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 祇園の風情溢れる町家で京都の食文化を体験（参考情報）
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/kyoto/A2601/A260301/26005853/" target="_blank" class="btn btn-primary">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3月18日 -->
+        <div class="day-section" data-date="3/18">
+            <div class="day-title"><span class="day-icon">🌅</span>3月18日（水）朝食 — 京都駅近くでゆっくり</div>
+
+            <div class="cards-grid">
+                <!-- 茶寮FUKUCHA（選択済み） -->
+                <div class="card" data-category="朝食" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">茶寮FUKUCHA ✅ 現在のプラン</div>
+                        <div class="card-subtitle">さりょうふくちゃ</div>
+                        <div class="badge-container">
+                            <span class="badge meal">朝食</span>
+                            <span class="badge">宇治茶・スイーツ</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">京都ポルタB1F（京都駅地下直結）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥800～1,500</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">7:00〜23:00</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">👥</span>
+                            <div>
+                                <div class="info-label">予約</div>
+                                <div class="info-value">不要</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>福寿園提供の上質宇治茶×スイーツ</strong><br/>抹茶ラテ・宇治茶スイーツセット
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 京都駅地下直結で雨でも安心。神戸へ向かう前にゆっくり朝の一杯を楽しめる
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.fukujuen.com/saryo-fukucha/" target="_blank" class="btn btn-primary">公式サイト</a>
+                            <a href="https://tabelog.com/kyoto/A2601/A260101/26044459/" target="_blank" class="btn">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- スマート珈琲店 -->
+                <div class="card" data-category="朝食" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">スマート珈琲店</div>
+                        <div class="card-subtitle">すまーとこーひーてん</div>
+                        <div class="badge-container">
+                            <span class="badge meal">朝食</span>
+                            <span class="badge">レトロ喫茶</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">中京区三条通富小路西入（地下鉄烏丸御池 徒歩8分）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥1,000～1,500</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">8:00～19:00（月定休）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>創業1932年の京都老舗喫茶</strong><br/>ホットケーキ・コーヒー
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 昭和レトロの内装で京都の朝をゆっくり過ごす。3日目ブランチの第一候補でもある名店
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/kyoto/A2601/A260202/26000222/" target="_blank" class="btn btn-primary">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 前田珈琲明倫店 -->
+                <div class="card" data-category="朝食" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">前田珈琲 明倫店</div>
+                        <div class="card-subtitle">まえだこーひー めいりんてん</div>
+                        <div class="badge-container">
+                            <span class="badge meal">朝食</span>
+                            <span class="badge">カフェ</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">中京区堺町御池（京都芸術センター内）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">モーニング ¥700～1,200</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">8:00〜21:00</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>旧明倫小学校を改装した空間</strong><br/>吹き抜けの大空間でモーニングセット
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 広くておしゃれな空間でゆっくり過ごせる。朝早めの時間も落ち着いて座れる
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/kyoto/A2601/A260202/26005571/" target="_blank" class="btn btn-primary">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-title"><span class="day-icon">☀️</span>3月18日 ランチ（神戸・友人と）</div>
+
+            <div class="cards-grid">
+                <!-- モーリヤ 本店 -->
+                <div class="card" data-category="ランチ" data-area="神戸">
+                    <div class="card-header">
+                        <div class="card-title">モーリヤ 本店 ✅ 現在のプラン</div>
+                        <div class="card-subtitle">もーりや ほんてん</div>
+                        <div class="badge-container">
+                            <span class="badge meal">ランチ</span>
+                            <span class="badge">神戸牛ステーキ</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">神戸市中央区下山手通2丁目1-17（元町・北野坂近く）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">ランチ ¥13,000～</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">ランチ 11:00～15:00 / ディナー 15:00～22:00</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">📞</span>
+                            <div>
+                                <div class="info-label">電話・予約</div>
+                                <div class="info-value">要予約（公式サイトまたは電話）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>創業1885年・A5等級神戸牛</strong><br/>目の前で焼き上げる鉄板焼きステーキの最高峰
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 神戸牛鉄板焼きの老舗中の老舗。早めの予約が必須。神戸に来たら外せない一食
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.mouriya.co.jp/" target="_blank" class="btn btn-primary">公式サイト</a>
+                            <a href="https://tabelog.com/hyogo/A2801/A280102/28000089/" target="_blank" class="btn">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 南京町（代替・食べ歩き） -->
+                <div class="card" data-category="ランチ" data-area="神戸">
+                    <div class="card-header">
+                        <div class="card-title">南京町（神戸中華街）</div>
+                        <div class="card-subtitle">なんきんまち</div>
+                        <div class="badge-container">
+                            <span class="badge meal">ランチ</span>
+                            <span class="badge">食べ歩き</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">神戸市中央区元町（元町駅 徒歩3分）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥500〜（食べ歩き）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">各店舗で異なる（10:00〜20:00ごろ）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>日本三大中華街のひとつ</strong><br/>老祥記の豚まん・小籠包・焼小籠包など食べ歩きに最適
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> モーリヤが予約できない場合や軽めに済ませたい時の代替案。神戸散策と組み合わせて楽しめる
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.nankinmachi.or.jp" target="_blank" class="btn btn-primary">公式サイト</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-title"><span class="day-icon">🌆</span>3月18日 夕食（大阪・友人と二人で）</div>
+
+            <div class="cards-grid">
+                <!-- 法善寺横丁 -->
+                <div class="card" data-category="夕食" data-area="大阪">
+                    <div class="card-header">
+                        <div class="card-title">法善寺横丁の割烹・小料理屋 ✅ 現在のプラン</div>
+                        <div class="card-subtitle">ほうぜんじよこちょう</div>
+                        <div class="badge-container">
+                            <span class="badge meal">夕食</span>
+                            <span class="badge">割烹・小料理</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">大阪市中央区難波・法善寺横丁（難波駅 徒歩5分）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥3,000〜8,000（おふたりで）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">各店舗で異なる（17:00〜22:00ごろ）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">👥</span>
+                            <div>
+                                <div class="info-label">スタイル</div>
+                                <div class="info-value">大阪在住の友人と2名</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>大阪の隠れた名店街</strong><br/>石畳と苔むした水掛不動が美しい横丁
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>おすすめ店：</strong> 正弁丹吾亭（老舗割烹）、魚貝小皿和食 一喜、法善寺 浅草（お好み焼き）、元祖串かつ だるまなど。大阪在住の友人に任せても◎
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/matome/19815/" target="_blank" class="btn btn-primary">食べログまとめ</a>
+                            <a href="https://osaka-info.jp/spot/hozenji-yokocho/" target="_blank" class="btn">大阪観光局</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 道頓堀エリア（代替） -->
+                <div class="card" data-category="夕食" data-area="大阪">
+                    <div class="card-header">
+                        <div class="card-title">道頓堀・難波エリアで探す</div>
+                        <div class="card-subtitle">どうとんぼり なんば</div>
+                        <div class="badge-container">
+                            <span class="badge meal">夕食</span>
+                            <span class="badge">大阪グルメ</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">大阪市中央区道頓堀・難波エリア</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥2,000〜6,000（店舗により異なる）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>大阪グルメの聖地</strong><br/>たこ焼き、お好み焼き、串揚げ、割烹など多数
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 友人と一緒にその日の気分で決めるのが大阪流。道頓堀を歩きながら気になるお店へ飛び込むのも楽しい
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/osaka/A2701/A270101/" target="_blank" class="btn btn-primary">食べログで探す</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3月19日 -->
+        <div class="day-section" data-date="3/19">
+            <div class="day-title"><span class="day-icon">🌿</span>3月19日（木）のんびりブランチ — 梅小路公園</div>
+
+            <div class="cards-grid">
+                <!-- BOTANIQ KAJIYA（選択済み） -->
+                <div class="card" data-category="ブランチ" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">BOTANIQ KAJIYA ✅ 現在のプラン</div>
+                        <div class="card-subtitle">ボタニカジヤ</div>
+                        <div class="badge-container">
+                            <span class="badge meal">ブランチ</span>
+                            <span class="badge">ボタニカルカフェ</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">下京区観喜寺町56-3 梅小路公園 緑の館内（花伝抄から徒歩3分）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥1,500〜2,500</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">土日祝 8:00〜 / 平日 9:00〜（LO 21:00）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">📞</span>
+                            <div>
+                                <div class="info-label">電話</div>
+                                <div class="info-value">075-585-2755</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">👥</span>
+                            <div>
+                                <div class="info-label">予約</div>
+                                <div class="info-value">不要（大型荷物持ち込みOK）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>植物に囲まれた明るい空間</strong><br/>抹茶ティラミストースト・フラワーリースサラダ・KAJIYAパフェ
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 花伝抄チェックアウト後に荷物を持ったままブランチできる。梅小路公園の緑を眺めながらゆっくり過ごせる絶好のロケーション
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/kyoto/A2601/A260203/26043069/" target="_blank" class="btn btn-primary">食べログ</a>
+                            <a href="https://www.hotpepper.jp/strJ004068123/" target="_blank" class="btn">ホットペッパー</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- スマート珈琲店（代替） -->
+                <div class="card" data-category="ブランチ" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">スマート珈琲店</div>
+                        <div class="card-subtitle">すまーとこーひーてん（代替候補）</div>
+                        <div class="badge-container">
+                            <span class="badge meal">ブランチ</span>
+                            <span class="badge">レトロ喫茶</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">中京区三条通富小路西入（地下鉄烏丸御池 徒歩8分）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥1,000～1,500</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">8:00～19:00（月定休）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>創業1932年 京都の老舗喫茶</strong><br/>ホットケーキ・コーヒー・プリン
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 重厚な昭和レトロの内装で京都の朝をゆっくり堪能。ホットケーキは絶品。チェックアウト後に中京区方面に寄る場合に
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/kyoto/A2601/A260202/26000222/" target="_blank" class="btn btn-primary">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 前田珈琲明倫店（代替） -->
+                <div class="card" data-category="ブランチ" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">前田珈琲 明倫店</div>
+                        <div class="card-subtitle">まえだこーひー（代替候補）</div>
+                        <div class="badge-container">
+                            <span class="badge meal">ブランチ</span>
+                            <span class="badge">カフェ</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">中京区堺町御池（京都芸術センター内）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥700～1,200</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">8:00～21:00</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>旧明倫小学校を改装した吹き抜け空間</strong><br/>モーニングセット・珈琲
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 広くておしゃれな空間。荷物があっても余裕で座れる。8時開店でチェックアウト前後どちらでも利用可
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/kyoto/A2601/A260202/26005571/" target="_blank" class="btn btn-primary">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-title"><span class="day-icon">☕</span>3月19日 嵐山おやつタイム</div>
+
+            <div class="cards-grid">
+                <!-- % Arabica 嵐山 -->
+                <div class="card" data-category="おやつ" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">% ARABICA 嵐山</div>
+                        <div class="card-subtitle">あらびかきょうとあらしやま</div>
+                        <div class="badge-container">
+                            <span class="badge meal">おやつ</span>
+                            <span class="badge">スペシャルティコーヒー</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">右京区嵯峨天龍寺すすきのばばちょう3-47（嵐山駅 徒歩5分）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥700～1,200</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">8:00〜18:00</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">📞</span>
+                            <div>
+                                <div class="info-label">電話</div>
+                                <div class="info-value">075-748-0057</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>世界的スペシャルティコーヒーのフラッグシップ</strong><br/>ラテ・エスプレッソ。渡月橋の眺望
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 嵐山散策の途中でラテを片手に外の空気を吸う。ミニマルなデザインと絶景が映える。テイクアウト中心で回転も早い
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://arabica.coffee/en/" target="_blank" class="btn btn-primary">公式サイト</a>
+                            <a href="https://tabelog.com/kyoto/A2601/A260403/26025913/" target="_blank" class="btn">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 天龍寺 篩月（精進料理ランチ候補） -->
+                <div class="card" data-category="おやつ" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">天龍寺 篩月</div>
+                        <div class="card-subtitle">てんりゅうじ しげつ</div>
+                        <div class="badge-container">
+                            <span class="badge meal">ランチ</span>
+                            <span class="badge michelin">★ ミシュラン</span>
+                            <span class="badge green">🌱 グリーン</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">右京区嵯峨天龍寺（天龍寺境内）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">雪 ¥3,300〜花 ¥8,000</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">📞</span>
+                            <div>
+                                <div class="info-label">電話</div>
+                                <div class="info-value">075-882-9725</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">👥</span>
+                            <div>
+                                <div class="info-label">予約</div>
+                                <div class="info-value">必須（3日前まで）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>★ミシュラン1つ星 精進料理</strong><br/>天龍寺の庭園を眺めながらランチ
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 嵐山観光のハイライト。天龍寺の世界遺産の庭園を眺めながら精進料理を楽しむ贅沢なランチ。要予約
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.tenryuji.com/shigetsu/" target="_blank" class="btn btn-primary">公式サイト</a>
+                            <a href="https://tabelog.com/kyoto/A2601/A260401/26003631/" target="_blank" class="btn">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-title"><span class="day-icon">🌆</span>3月19日 夕食 — ハトヤ瑞鳳閣そば・京都駅ビル</div>
+
+            <div class="cards-grid">
+                <!-- 接方来 京都駅ビル店（選択済み） -->
+                <div class="card" data-category="夕食" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">京やさい料理 接方来（京都駅ビル店）✅ 現在のプラン</div>
+                        <div class="card-subtitle">きょうやさいりょうり せっぽうらい</div>
+                        <div class="badge-container">
+                            <span class="badge meal">夕食</span>
+                            <span class="badge">京野菜料理</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">下京区烏丸通塩小路下ル 京都駅ビル東ゾーン2F（ハトヤ瑞鳳閣から徒歩5分）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">ディナー ¥3,000〜4,000 / ランチ ¥1,000〜2,000</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">⏰</span>
+                            <div>
+                                <div class="info-label">営業</div>
+                                <div class="info-value">日〜木 11:00〜22:30（LO 21:30）/ 金土・祝前日〜23:00</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">📞</span>
+                            <div>
+                                <div class="info-label">電話</div>
+                                <div class="info-value">050-5488-1693</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">👥</span>
+                            <div>
+                                <div class="info-label">予約</div>
+                                <div class="info-value">推奨（食べログ・ぐるなびから予約可）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>京都産旬野菜の創作京料理</strong><br/>万願寺とうがらし・京水菜・聖護院かぶらなど
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 京都駅ビル内で食後すぐホテルへ帰れる抜群の立地。個室あり。嵐山の歩き疲れを京野菜のやさしい味で癒す
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.kyoto-station-building.co.jp/restaurant_cafe/006/" target="_blank" class="btn btn-primary">京都駅ビル公式</a>
+                            <a href="https://tabelog.com/kyoto/A2601/A260101/26003441/" target="_blank" class="btn">食べログ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 代替：鉄板焼 和亭 もり山 -->
+                <div class="card" data-category="夕食" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">鉄板焼 和亭 もり山</div>
+                        <div class="card-subtitle">てっぱんやき わてい もりやま（代替候補）</div>
+                        <div class="badge-container">
+                            <span class="badge meal">夕食</span>
+                            <span class="badge">鉄板焼き</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">京都駅ビル内（ハトヤ瑞鳳閣から徒歩5分）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">¥8,000〜15,000</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>和牛鉄板焼きカウンタースタイル</strong><br/>目の前で焼き上げる迫力
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 旅最後の夜を少し贅沢に。和牛のコースで旅を締めくくりたい時の代替案
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://tabelog.com/kyoto/A2601/A260101/" target="_blank" class="btn btn-primary">食べログで検索</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3月20日 -->
+        <div class="day-section" data-date="3/20">
+            <div class="day-title"><span class="day-icon">🕊</span>3月20日（金）最終日 — 朝食後はノープラン</div>
+
+            <div class="cards-grid">
+                <!-- ハトヤ瑞鳳閣 和朝食（プラン込み） -->
+                <div class="card" data-category="朝食" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">京湯元 ハトヤ瑞鳳閣 和朝食 ✅ プラン込み</div>
+                        <div class="card-subtitle">きょうゆもと はとやずいほうかく</div>
+                        <div class="badge-container">
+                            <span class="badge meal">朝食</span>
+                            <span class="badge">和朝食</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">場所</div>
+                                <div class="info-value">ホテル内（下京区・京都駅徒歩5分）</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="icon">💰</span>
+                            <div>
+                                <div class="info-label">価格</div>
+                                <div class="info-value">プランに含む（追加費用なし）</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>京風和朝食</strong><br/>白ごはん・出汁の味噌汁・旬の小鉢・焼き魚
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>ポイント：</strong> 旅の最後の朝は外出不要でゆっくりと。この朝食が今日唯一の「予定」。その後はスマートEXで好きな時間の新幹線に乗ればOK
+                        </div>
+                    </div>
+                </div>
+
+                <!-- フリータイム参考 -->
+                <div class="card" data-category="ランチ" data-area="京都">
+                    <div class="card-header">
+                        <div class="card-title">京都駅周辺・気分で探す</div>
+                        <div class="card-subtitle">最終日はノープラン</div>
+                        <div class="badge-container">
+                            <span class="badge meal">ランチ</span>
+                            <span class="badge">自由</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <div class="info-label">エリア</div>
+                                <div class="info-value">京都駅周辺〜気持ちの向いたどこでも</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-highlight">
+                            <strong>最終日はノープランが一番</strong><br/>その時食べたいものを、その時いる場所で
+                        </div>
+
+                        <div class="recommendation">
+                            <strong>もし迷ったら：</strong> 京都駅伊勢丹B1〜B2のフードコートや、The CUBE・京都タワーSANDOの飲食店。お土産購入と組み合わせてランチを。スマートEXで帰りの新幹線を好きな時間に変更できるので、ゆっくりしてOK
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.jr-kyoto.com/restaurants/" target="_blank" class="btn btn-primary">京都駅ビル飲食店</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // URLパラメーターで日付を受け取る関数
+        function switchToDate(targetDate) {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const sections = document.querySelectorAll('.day-section');
+            tabs.forEach(t => {
+                t.classList.remove('active');
+                if (t.getAttribute('data-date') === targetDate) t.classList.add('active');
+            });
+            sections.forEach(section => {
+                section.classList.remove('active');
+                if (section.getAttribute('data-date') === targetDate) section.classList.add('active');
+            });
+        }
+
+        // ページ読み込み時にURLパラメーターを確認
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const dateParam = urlParams.get('date');
+            if (dateParam) {
+                switchToDate(dateParam);
+                // スクロール位置をリセット
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+        });
+
+        // タブ切り替え機能
+        const tabs = document.querySelectorAll('.tab-btn');
+        const sections = document.querySelectorAll('.day-section');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetDate = tab.getAttribute('data-date');
+
+                // アクティブタブの更新
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // セクション表示の更新
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.getAttribute('data-date') === targetDate) {
+                        section.classList.add('active');
+                    }
+                });
+
+                // スクロール
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // フィルター機能
+        const dateFilter = document.getElementById('date-filter');
+        const categoryFilter = document.getElementById('category-filter');
+        const areaFilter = document.getElementById('area-filter');
+        const cards = document.querySelectorAll('.card');
+
+        function applyFilters() {
+            const selectedDate = dateFilter.value;
+            const selectedCategory = categoryFilter.value;
+            const selectedArea = areaFilter.value;
+
+            cards.forEach(card => {
+                let show = true;
+
+                // 日付でフィルター（カードが属する日付セクションをチェック）
+                if (selectedDate) {
+                    const parentSection = card.closest('.day-section');
+                    const sectionDate = parentSection.getAttribute('data-date');
+                    if (sectionDate !== selectedDate) {
+                        show = false;
+                    }
+                }
+
+                // カテゴリでフィルター
+                if (selectedCategory && !card.getAttribute('data-category').includes(selectedCategory)) {
+                    show = false;
+                }
+
+                // エリアでフィルター
+                if (selectedArea && card.getAttribute('data-area') !== selectedArea) {
+                    show = false;
+                }
+
+                card.style.display = show ? '' : 'none';
+            });
+        }
+
+        dateFilter.addEventListener('change', applyFilters);
+        categoryFilter.addEventListener('change', applyFilters);
+        areaFilter.addEventListener('change', applyFilters);
+    </script>
+</body>
+</html>
